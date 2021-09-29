@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using ProjectSharp.WebApi.Common.AppSettings;
 
 namespace ProjectSharp.WebApi
 {
@@ -26,6 +27,11 @@ namespace ProjectSharp.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // configure strongly typed settings object
+            services.Configure<JwtSettings>(Configuration.GetSection("JwtSecret"));
+            services.Configure<MongoDbSettings>(Configuration.GetSection("MongoDbSettings"));
+            
+            
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -42,8 +48,6 @@ namespace ProjectSharp.WebApi
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ProjectSharp.WebApi v1"));
             }
-
-            app.UseHttpsRedirection();
 
             app.UseRouting();
 

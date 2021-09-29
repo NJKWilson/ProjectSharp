@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using ProjectSharp.WebApi.DbModel.ApplicationUser;
 
-namespace ProjectSharp.WebApi.Common.JwtToken
+namespace ProjectSharp.WebApi.Brokers.JwtToken
 {
     public class TokenService : ITokenService
     {

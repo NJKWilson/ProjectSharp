@@ -13,8 +13,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Brokers\BCrypt" />
       <Folder Include="Common\Middleware" />
-      <Folder Include="Features\ApplicationUser\Authenticate" />
+      <Folder Include="Configuration" />
       <Folder Include="Features\ApplicationUser\Create" />
       <Folder Include="Features\ApplicationUser\Delete" />
       <Folder Include="Features\ApplicationUser\Get" />
