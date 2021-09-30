@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ProjectSharp.WebApi.Features.ApplicationUser.Authenticate
@@ -15,10 +16,9 @@ namespace ProjectSharp.WebApi.Features.ApplicationUser.Authenticate
         }
         // GET: api/ApplicationUser
         [HttpPost]
-        public IEnumerable<string> Get([FromBody] AuthenticationRequest authenticationRequest)
+        public async ValueTask<ActionResult<AuthenticationResponse>> Get([FromBody] AuthenticationRequest authenticationRequest)
         {
-            _authenticationService.Authenticate(authenticationRequest);
-            return new string[] { "value1", "value2" };
+            return Ok(await _authenticationService.Authenticate(authenticationRequest));
         }
     }
 }

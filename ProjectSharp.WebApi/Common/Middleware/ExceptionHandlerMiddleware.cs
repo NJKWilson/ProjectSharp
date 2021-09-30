@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.CodeAnalysis.Text;
+using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
+using MongoDB.Driver;
 using ProjectSharp.WebApi.Common.Exceptions;
 
 namespace ProjectSharp.WebApi.Common.Middleware
@@ -30,14 +33,40 @@ namespace ProjectSharp.WebApi.Common.Middleware
 
         private async Task HandleExceptionAsync(HttpContext httpContext, Exception exception)
         {
-            httpContext.Response.ContentType = "application/json";
-            httpContext.Response.StatusCode = exception switch
+            switch (exception)
             {
-                RequestValidationException e => (int) HttpStatusCode.BadRequest,
-                _ => (int) HttpStatusCode.InternalServerError
-            };
+                case MongoConfigurationException:
+                    await SendResponse(httpContext, (int)HttpStatusCode.InternalServerError, 
+                        "Mongodb configuration error, have you set up appsettings.json?");
+                    break;
+                case TimeoutException:
+                    await SendResponse(httpContext, (int)HttpStatusCode.InternalServerError, 
+                        "Server timed out check MongoDb");
+                    break;
+                case RequestValidationException:
+                    await SendResponse(httpContext, (int)HttpStatusCode.BadRequest, 
+                        exception.Message, true);
+                    break;
+                default:
+                    await SendResponse(httpContext, (int)HttpStatusCode.InternalServerError, "Unknown Error");
+                    break;
+            }
+        }
+
+        private async Task SendResponse(HttpContext httpContext, int statusCode , string message, bool json = false)
+        {
+            if (json)
+            {
+                httpContext.Response.ContentType = "application/json";
+            }
+            else
+            {
+                httpContext.Response.ContentType = "text/plain";
+            }
+                
             
-            await httpContext.Response.WriteAsync(exception?.Message ?? "No Error Message Available.");
+            httpContext.Response.StatusCode = statusCode;
+            await httpContext.Response.WriteAsync(message ?? "No Error Message Available.");
         }
     }
 }

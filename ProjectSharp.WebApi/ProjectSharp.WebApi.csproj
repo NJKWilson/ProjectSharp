@@ -6,6 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="BCrypt.Net-Next" Version="4.0.2" />
         <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.12.2" />
         <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
         <PackageReference Include="MongoDB.Driver" Version="2.13.1" />
@@ -14,7 +15,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Brokers\BCrypt" />
       <Folder Include="Features\ApplicationUser\Create" />
       <Folder Include="Features\ApplicationUser\Delete" />
       <Folder Include="Features\ApplicationUser\Get" />

@@ -6,11 +6,11 @@ namespace ProjectSharp.WebApi.Brokers.MongoDb
 {
     public class DataContext : IDataContext
     {
-        public readonly IMongoCollection<User> Users;
+        public IMongoCollection<User> Users { get; }
         
         private const string UserCollectionName = "Users";
         
-        public DataContext(IMongoDbSettings mongoDbSettings)
+        public DataContext(MongoDbSettings mongoDbSettings)
         {
             var client = new MongoClient(mongoDbSettings.ConnectionString);
             var database = client.GetDatabase(mongoDbSettings.DatabaseName);

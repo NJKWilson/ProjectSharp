@@ -9,6 +9,7 @@ namespace ProjectSharp.WebApi.DbModel.ApplicationUser
         public string Email { get; set; }
         public string Role { get; set; }
         public string PasswordHash { get; set; }
+        public string PasswordSalt { get; set; }
         public DateTimeOffset CreatedDate { get; set; }
         public DateTimeOffset UpdatedDate { get; set; }
         public Guid CreatedBy { get; set; }

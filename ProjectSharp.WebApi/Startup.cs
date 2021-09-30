@@ -5,6 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using ProjectSharp.WebApi.Brokers.BCryptBroker;
+using ProjectSharp.WebApi.Brokers.JwtToken;
 using ProjectSharp.WebApi.Brokers.MongoDb;
 using ProjectSharp.WebApi.Common.AppSettings;
 using ProjectSharp.WebApi.Common.Middleware;
@@ -26,11 +28,16 @@ namespace ProjectSharp.WebApi
         {
             // Get configuration settings from appsettings.json and create strongly typed settings objects
             services.Configure<JwtSettings>(Configuration.GetSection(nameof(JwtSettings)));
-            services.Configure<IMongoDbSettings>(Configuration.GetSection(nameof(MongoDbSettings)));
+            services.Configure<MongoDbSettings>(Configuration.GetSection(nameof(MongoDbSettings)));
             
             // Add the settings objects to di container
             services.AddSingleton(sp =>
-                sp.GetRequiredService<IOptions<IMongoDbSettings>>().Value);
+                sp.GetRequiredService<IOptions<JwtSettings>>().Value);
+            services.AddSingleton(sp =>
+                sp.GetRequiredService<IOptions<MongoDbSettings>>().Value);
+            
+            services.AddSingleton<IPasswordService, PasswordService>();
+            services.AddSingleton<ITokenService, TokenService>();
             
             services.AddSingleton<IDataContext, DataContext>();
 

@@ -1,7 +1,9 @@
+using System.Threading.Tasks;
+
 namespace ProjectSharp.WebApi.Features.ApplicationUser.Authenticate
 {
     public interface IAuthenticationService
     {
-        public void Authenticate(AuthenticationRequest authenticationRequest);
+        public ValueTask<AuthenticationResponse> Authenticate(AuthenticationRequest authenticationRequest);
     }
 }
