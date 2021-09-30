@@ -47,6 +47,10 @@ namespace ProjectSharp.WebApi.Common.Middleware
                     await SendResponse(httpContext, (int)HttpStatusCode.BadRequest, 
                         exception.Message, true);
                     break;
+                case ApplicationUserCredentialsException:
+                    await SendResponse(httpContext, (int)HttpStatusCode.Forbidden, 
+                        exception.Message, false);
+                    break;
                 default:
                     await SendResponse(httpContext, (int)HttpStatusCode.InternalServerError, "Unknown Error");
                     break;
@@ -55,15 +59,7 @@ namespace ProjectSharp.WebApi.Common.Middleware
 
         private async Task SendResponse(HttpContext httpContext, int statusCode , string message, bool json = false)
         {
-            if (json)
-            {
-                httpContext.Response.ContentType = "application/json";
-            }
-            else
-            {
-                httpContext.Response.ContentType = "text/plain";
-            }
-                
+            httpContext.Response.ContentType = json ? "application/json" : "text/plain";
             
             httpContext.Response.StatusCode = statusCode;
             await httpContext.Response.WriteAsync(message ?? "No Error Message Available.");

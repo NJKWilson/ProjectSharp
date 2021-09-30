@@ -5,6 +5,7 @@ using ProjectSharp.WebApi.Brokers.BCryptBroker;
 using ProjectSharp.WebApi.Brokers.JwtToken;
 using ProjectSharp.WebApi.Brokers.MongoDb;
 using ProjectSharp.WebApi.Common.AppSettings;
+using ProjectSharp.WebApi.Common.Exceptions;
 using ProjectSharp.WebApi.DbModel.ApplicationUser;
 
 namespace ProjectSharp.WebApi.Features.ApplicationUser.Authenticate
@@ -32,11 +33,11 @@ namespace ProjectSharp.WebApi.Features.ApplicationUser.Authenticate
             var user = await GetByUsername(authenticationRequest.Username);
             //todo exception
             if (user == null)
-                throw new Exception();
+                throw new ApplicationUserCredentialsException("User does not exist.");
             
             //todo exception
             if (!_passwordService.VerifyHash(authenticationRequest.Password, user.PasswordSalt, user.PasswordHash))
-                throw new Exception();
+                throw new ApplicationUserCredentialsException("Password incorrect.");
 
             var token = _tokenService.BuildToken(_jwtSettings.Key, _jwtSettings.Issuer, user);
             

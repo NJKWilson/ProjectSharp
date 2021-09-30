@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ProjectSharp.WebUi.Features.WelcomePage;
 
 namespace ProjectSharp.WebUi
 {
@@ -25,6 +26,8 @@ namespace ProjectSharp.WebUi
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpClient();
+            services.AddSingleton<ApiPostService>();
             services.AddRazorPages();
             services.AddServerSideBlazor();
             // services.AddSingleton<WeatherForecastService>();
