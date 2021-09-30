@@ -20,8 +20,12 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="WebApi" />
       <Folder Include="WebUi" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ProjectSharp.WebApi\ProjectSharp.WebApi.csproj" />
+      <ProjectReference Include="..\ProjectSharp.WebUi\ProjectSharp.WebUi.csproj" />
     </ItemGroup>
 
 </Project>

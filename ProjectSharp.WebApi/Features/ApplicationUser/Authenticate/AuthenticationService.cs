@@ -1,7 +1,10 @@
 namespace ProjectSharp.WebApi.Features.ApplicationUser.Authenticate
 {
-    public class AuthenticationService
+    public class AuthenticationService : IAuthenticationService
     {
-        //todo
+        public void Authenticate(AuthenticationRequest authenticationRequest)
+        {
+            authenticationRequest.Validate();
+        }
     }
 }

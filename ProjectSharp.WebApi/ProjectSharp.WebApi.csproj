@@ -8,14 +8,13 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.12.2" />
         <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+        <PackageReference Include="MongoDB.Driver" Version="2.13.1" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
         <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.12.2" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="Brokers\BCrypt" />
-      <Folder Include="Common\Middleware" />
-      <Folder Include="Configuration" />
       <Folder Include="Features\ApplicationUser\Create" />
       <Folder Include="Features\ApplicationUser\Delete" />
       <Folder Include="Features\ApplicationUser\Get" />

@@ -1,17 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using ProjectSharp.WebApi.Brokers.MongoDb;
 using ProjectSharp.WebApi.Common.AppSettings;
+using ProjectSharp.WebApi.Common.Middleware;
+using ProjectSharp.WebApi.Configuration.MongoDb;
+using ProjectSharp.WebApi.Features.ApplicationUser.Authenticate;
 
 namespace ProjectSharp.WebApi
 {
@@ -23,14 +21,20 @@ namespace ProjectSharp.WebApi
         }
 
         public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
+        
         public void ConfigureServices(IServiceCollection services)
         {
-            // configure strongly typed settings object
-            services.Configure<JwtSettings>(Configuration.GetSection("JwtSecret"));
-            services.Configure<MongoDbSettings>(Configuration.GetSection("MongoDbSettings"));
+            // Get configuration settings from appsettings.json and create strongly typed settings objects
+            services.Configure<JwtSettings>(Configuration.GetSection(nameof(JwtSettings)));
+            services.Configure<IMongoDbSettings>(Configuration.GetSection(nameof(MongoDbSettings)));
             
+            // Add the settings objects to di container
+            services.AddSingleton(sp =>
+                sp.GetRequiredService<IOptions<IMongoDbSettings>>().Value);
+            
+            services.AddSingleton<IDataContext, DataContext>();
+
+            services.AddSingleton<IAuthenticationService, AuthenticationService>();
             
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -38,17 +42,19 @@ namespace ProjectSharp.WebApi
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "ProjectSharp.WebApi", Version = "v1"});
             });
         }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ProjectSharp.WebApi v1"));
+                app.UseSwaggerUI(c => 
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "ProjectSharp.WebApi v1"));
             }
 
+            app.UseMiddleware<ExceptionHandlerMiddleware>();
+            
             app.UseRouting();
 
             app.UseAuthorization();
