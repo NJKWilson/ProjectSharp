@@ -20,7 +20,18 @@ namespace ProjectSharp.WebApi.Configuration.MongoDb
                 user => user.Email == "admin@psharp.com")).FirstOrDefault();
 
             if (adminUser == null)
-                SeedAdmin(dataContext);
+                CreateIndex(dataContext);
+        }
+        
+        private static void CreateIndex(IDataContext dataContext)
+        {
+            var indexKeyDefinition = Builders<User>.IndexKeys.Ascending(user => user.Email);
+            var indexOptions = new CreateIndexOptions() {Unique = true};
+            var indexModel = new CreateIndexModel<User>(indexKeyDefinition, indexOptions);
+
+            dataContext.Users.Indexes.CreateOne(indexModel);
+
+            SeedAdmin(dataContext);
         }
         
         private static void SeedAdmin(IDataContext dataContext)

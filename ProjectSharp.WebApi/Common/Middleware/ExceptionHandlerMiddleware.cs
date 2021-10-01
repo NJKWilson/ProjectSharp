@@ -53,6 +53,10 @@ namespace ProjectSharp.WebApi.Common.Middleware
                     await SendResponse(httpContext, (int)HttpStatusCode.InternalServerError, 
                         exception.Message, false);
                     break;
+                case MongoWriteException:
+                    await SendResponse(httpContext, (int)HttpStatusCode.InternalServerError, 
+                        "Already Exists", false);
+                    break;
                 default:
                     await SendResponse(httpContext, (int)HttpStatusCode.InternalServerError, "Unknown Error");
                     break;

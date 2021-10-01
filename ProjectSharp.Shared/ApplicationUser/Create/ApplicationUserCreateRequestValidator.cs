@@ -18,7 +18,6 @@ namespace ProjectSharp.Shared.ApplicationUser.Create
 
             ValidateFirstName(applicationUserCreateRequest, errorList);
             ValidateFamilyName(applicationUserCreateRequest, errorList);
-            ValidateUsername(applicationUserCreateRequest, errorList);
             ValidateEmail(applicationUserCreateRequest, errorList);
             ValidatePassword(applicationUserCreateRequest, errorList);
 
@@ -44,14 +43,6 @@ namespace ProjectSharp.Shared.ApplicationUser.Create
                 errorList.AddOrUpdate(
                     nameof(applicationUserCreateRequest.FamilyName),
                     $"{nameof(applicationUserCreateRequest.FamilyName)} cannot be empty.");
-        }
-        private static void ValidateUsername(
-            ApplicationUserCreateRequest applicationUserCreateRequest, Dictionary<string, List<string>> errorList)
-        {
-            if (string.IsNullOrWhiteSpace(applicationUserCreateRequest.Username))
-                errorList.AddOrUpdate(
-                    nameof(applicationUserCreateRequest.Username),
-                    $"{nameof(applicationUserCreateRequest.Username)} cannot be empty.");
         }
         private static void ValidateEmail(
             ApplicationUserCreateRequest applicationUserCreateRequest, Dictionary<string, List<string>> errorList)
