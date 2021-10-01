@@ -6,7 +6,7 @@ namespace ProjectSharp.WebApi.DbModel
     {
         DateTimeOffset CreatedDate { get; set; }
         DateTimeOffset UpdatedDate { get; set; }
-        Guid CreatedBy { get; set; }
-        Guid UpdatedBy { get; set; }
+        string CreatedBy { get; set; }
+        string UpdatedBy { get; set; }
     }
 }

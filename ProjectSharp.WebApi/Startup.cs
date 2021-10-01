@@ -12,6 +12,7 @@ using ProjectSharp.WebApi.Common.AppSettings;
 using ProjectSharp.WebApi.Common.Middleware;
 using ProjectSharp.WebApi.Configuration.MongoDb;
 using ProjectSharp.WebApi.Features.ApplicationUser.Authenticate;
+using ProjectSharp.WebApi.Features.ApplicationUser.Create;
 
 namespace ProjectSharp.WebApi
 {
@@ -42,6 +43,7 @@ namespace ProjectSharp.WebApi
             services.AddSingleton<IDataContext, DataContext>();
 
             services.AddSingleton<IAuthenticationService, AuthenticationService>();
+            services.AddSingleton<IApplicationUserCreateService, ApplicationUserCreateService>();
             
             services.AddControllers();
             services.AddSwaggerGen(c =>

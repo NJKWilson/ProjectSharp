@@ -5,6 +5,6 @@ namespace ProjectSharp.WebApi.Features.ApplicationUser.Authenticate
 {
     public interface IAuthenticationService
     {
-        public ValueTask<AuthenticationResponse> Authenticate(AuthenticationRequest authenticationRequest);
+        ValueTask<AuthenticationResponse> Authenticate(AuthenticationRequest authenticationRequest);
     }
 }

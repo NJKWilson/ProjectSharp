@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProjectSharp.WebUi.ProjectSharp.Shared.ApplicationUser.Authenticate;
@@ -15,10 +14,11 @@ namespace ProjectSharp.WebApi.Features.ApplicationUser.Authenticate
         {
             _authenticationService = authenticationService;
         }
-        // GET: api/ApplicationUser
+        
         [HttpPost]
+        [Route("[action]")]
         public async ValueTask<ActionResult<AuthenticationResponse>> 
-            Get([FromBody] AuthenticationRequest authenticationRequest)
+            Authenticate([FromBody] AuthenticationRequest authenticationRequest)
         {
             return Ok(await _authenticationService.Authenticate(authenticationRequest));
         }

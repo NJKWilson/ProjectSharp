@@ -14,7 +14,7 @@ namespace ProjectSharp.WebApi.Brokers.JwtToken
         public string BuildToken(string key, string issuer, User user)
         {
             var claims = new[] {    
-                new Claim(ClaimTypes.Name, user.Username),
+                new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.Role, user.Role),
                 new Claim(ClaimTypes.NameIdentifier,
                     Guid.NewGuid().ToString())

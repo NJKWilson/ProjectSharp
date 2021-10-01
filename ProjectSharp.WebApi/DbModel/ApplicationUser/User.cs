@@ -7,7 +7,6 @@ namespace ProjectSharp.WebApi.DbModel.ApplicationUser
         public Guid Id { get; set; }
         public string FirstName { get; set; }
         public string FamilyName { get; set; }
-        public string Username { get; set; }
         public string Email { get; set; }
         public string Role { get; set; }
         public string PasswordHash { get; set; }
@@ -15,7 +14,7 @@ namespace ProjectSharp.WebApi.DbModel.ApplicationUser
         
         public DateTimeOffset CreatedDate { get; set; }
         public DateTimeOffset UpdatedDate { get; set; }
-        public Guid CreatedBy { get; set; }
-        public Guid UpdatedBy { get; set; }
+        public string CreatedBy { get; set; }
+        public string UpdatedBy { get; set; }
     }
 }
