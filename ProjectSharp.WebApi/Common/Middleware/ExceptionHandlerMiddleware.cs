@@ -49,6 +49,10 @@ namespace ProjectSharp.WebApi.Common.Middleware
                     await SendResponse(httpContext, (int)HttpStatusCode.Forbidden, 
                         exception.Message, false);
                     break;
+                case DbOperationFailedException:
+                    await SendResponse(httpContext, (int)HttpStatusCode.InternalServerError, 
+                        exception.Message, false);
+                    break;
                 default:
                     await SendResponse(httpContext, (int)HttpStatusCode.InternalServerError, "Unknown Error");
                     break;

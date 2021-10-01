@@ -32,7 +32,7 @@ namespace ProjectSharp.WebApi.Features.ApplicationUser.Authenticate
             authenticationRequest.Validate();
             
             // Try to get user
-            var user = await GetByUsername(authenticationRequest.Email);
+            var user = await GetByEmail(authenticationRequest.Email);
             //todo exception
             if (user == null)
                 throw new AuthenticationException("User does not exist.");
@@ -56,7 +56,7 @@ namespace ProjectSharp.WebApi.Features.ApplicationUser.Authenticate
             return authenticationResponse;
         }
 
-        private async Task<User> GetByUsername(string email)
+        private async Task<User> GetByEmail(string email)
         {
             var filter = Builders<User>.Filter.Where(user => user.Email == email);
             

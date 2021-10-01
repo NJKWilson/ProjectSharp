@@ -16,6 +16,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ApplicationUser\Create\ApplicationUserCreateRequestValidator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ApplicationUser\Create\ApplicationUserCreateResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Exceptions\AuthenticationException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\DbOperationFailedException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Exceptions\ValidationException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extenstion\DictionaryExtensions.cs" />
   </ItemGroup>
