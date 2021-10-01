@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectSharp.WebApi", "Proj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectSharp.UnitTests", "ProjectSharp.UnitTests\ProjectSharp.UnitTests.csproj", "{07431077-FDC7-4F5B-9BFC-BEC49AD0E659}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ProjectSharp.Shared", "ProjectSharp.Shared\ProjectSharp.Shared.shproj", "{1F1C03C7-C353-4E4F-A577-67CB9607790B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

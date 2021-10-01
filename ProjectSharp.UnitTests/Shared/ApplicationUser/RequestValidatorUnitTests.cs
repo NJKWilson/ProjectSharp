@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using ProjectSharp.WebUi.ProjectSharp.Shared.ApplicationUser.Authenticate;
-using ProjectSharp.WebUi.ProjectSharp.Shared.ApplicationUser.Create;
-using ProjectSharp.WebUi.ProjectSharp.Shared.Exceptions;
-using ProjectSharp.WebUi.ProjectSharp.Shared.Extenstion;
+using ProjectSharp.WebApi.ApplicationUser.Authenticate;
+using ProjectSharp.WebApi.ApplicationUser.Create;
+using ProjectSharp.WebApi.Exceptions;
+using ProjectSharp.WebApi.Extenstion;
 using Xunit;
 
 namespace ProjectSharp.UnitTests.Shared.ApplicationUser

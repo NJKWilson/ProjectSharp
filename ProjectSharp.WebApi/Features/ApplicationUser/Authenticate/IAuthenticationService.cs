@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using ProjectSharp.WebUi.ProjectSharp.Shared.ApplicationUser.Authenticate;
+using ProjectSharp.WebApi.ApplicationUser.Authenticate;
 
 namespace ProjectSharp.WebApi.Features.ApplicationUser.Authenticate
 {

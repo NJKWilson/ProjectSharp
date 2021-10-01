@@ -1,12 +1,12 @@
 using System.Threading.Tasks;
 using MongoDB.Driver;
+using ProjectSharp.WebApi.ApplicationUser.Authenticate;
 using ProjectSharp.WebApi.Brokers.BCryptBroker;
 using ProjectSharp.WebApi.Brokers.JwtToken;
 using ProjectSharp.WebApi.Brokers.MongoDb;
 using ProjectSharp.WebApi.Common.AppSettings;
 using ProjectSharp.WebApi.DbModel.ApplicationUser;
-using ProjectSharp.WebUi.ProjectSharp.Shared.ApplicationUser.Authenticate;
-using ProjectSharp.WebUi.ProjectSharp.Shared.Exceptions;
+using ProjectSharp.WebApi.Exceptions;
 
 namespace ProjectSharp.WebApi.Features.ApplicationUser.Authenticate
 {

@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using ProjectSharp.WebApi.ApplicationUser.Create;
 using ProjectSharp.WebApi.DbModel.ApplicationUser;
-using ProjectSharp.WebUi.ProjectSharp.Shared.ApplicationUser.Create;
 
 namespace ProjectSharp.WebApi.Features.ApplicationUser.Create
 {

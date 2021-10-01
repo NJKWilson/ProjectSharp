@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using MongoDB.Driver;
 using Newtonsoft.Json;
-using ProjectSharp.WebUi.ProjectSharp.Shared.Exceptions;
+using ProjectSharp.WebApi.Exceptions;
 
 namespace ProjectSharp.WebApi.Common.Middleware
 {

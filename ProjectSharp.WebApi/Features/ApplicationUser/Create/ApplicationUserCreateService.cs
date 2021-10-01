@@ -1,11 +1,11 @@
 using System;
 using System.Threading.Tasks;
 using MongoDB.Driver;
+using ProjectSharp.WebApi.ApplicationUser.Create;
 using ProjectSharp.WebApi.Brokers.BCryptBroker;
 using ProjectSharp.WebApi.Brokers.MongoDb;
 using ProjectSharp.WebApi.DbModel.ApplicationUser;
-using ProjectSharp.WebUi.ProjectSharp.Shared.ApplicationUser.Create;
-using ProjectSharp.WebUi.ProjectSharp.Shared.Exceptions;
+using ProjectSharp.WebApi.Exceptions;
 
 namespace ProjectSharp.WebApi.Features.ApplicationUser.Create
 {

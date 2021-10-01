@@ -28,4 +28,6 @@
       <ProjectReference Include="..\ProjectSharp.WebUi\ProjectSharp.WebUi.csproj" />
     </ItemGroup>
 
+    <Import Project="..\ProjectSharp.Shared\ProjectSharp.Shared.projitems" Label="Shared" />
+
 </Project>
