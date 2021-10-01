@@ -16,6 +16,8 @@ namespace ProjectSharp.WebApi.Brokers.MongoDb
             var database = client.GetDatabase(mongoDbSettings.DatabaseName);
 
             Users = database.GetCollection<User>(UserCollectionName);
+
+            SeedData.Seed(this);
         }
     }
 }

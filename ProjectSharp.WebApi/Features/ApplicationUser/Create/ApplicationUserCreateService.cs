@@ -30,7 +30,7 @@ namespace ProjectSharp.WebApi.Features.ApplicationUser.Create
         /// <param name="loggedInUser">Logged in User Creating the new user.</param>
         /// <returns></returns>
         public async ValueTask<ApplicationUserCreateResponse> 
-            CreateAsync(ApplicationUserCreateRequest applicationUserCreateRequest, User loggedInUser)
+            CreateAsync(ApplicationUserCreateRequest applicationUserCreateRequest, string loggedInUser)
         {
             // Validate request
             applicationUserCreateRequest.Validate();
@@ -48,7 +48,7 @@ namespace ProjectSharp.WebApi.Features.ApplicationUser.Create
                 PasswordHash = _passwordService.HashPassword(applicationUserCreateRequest.Password, passwordSalt),
                 PasswordSalt = passwordSalt,
                 CreatedDate = DateTimeOffset.Now,
-                CreatedBy = loggedInUser.Email
+                CreatedBy = loggedInUser
             };
             
             // Insert the new user

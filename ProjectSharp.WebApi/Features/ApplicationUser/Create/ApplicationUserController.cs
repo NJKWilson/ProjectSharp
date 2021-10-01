@@ -21,7 +21,7 @@ namespace ProjectSharp.WebApi.Features.ApplicationUser.Create
         public async ValueTask<ActionResult<ApplicationUserCreateResponse>> 
             Create([FromBody] ApplicationUserCreateRequest applicationUserCreateRequest)
         {
-            return Ok(await _applicationUserCreateService.CreateAsync(applicationUserCreateRequest, new User()));
+            return Ok(await _applicationUserCreateService.CreateAsync(applicationUserCreateRequest, "Todo"));
         }
     }
 }

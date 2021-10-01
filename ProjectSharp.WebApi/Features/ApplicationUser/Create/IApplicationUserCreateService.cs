@@ -7,6 +7,6 @@ namespace ProjectSharp.WebApi.Features.ApplicationUser.Create
     public interface IApplicationUserCreateService
     {
         ValueTask<ApplicationUserCreateResponse> 
-            CreateAsync(ApplicationUserCreateRequest applicationUserCreateRequest, User user);
+            CreateAsync(ApplicationUserCreateRequest applicationUserCreateRequest, string user);
     }
 }
