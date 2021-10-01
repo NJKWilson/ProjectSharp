@@ -1,7 +1,7 @@
 using System;
 using System.Globalization;
 
-namespace ProjectSharp.WebApi.Exceptions
+namespace ProjectSharp.Shared.Exceptions
 {
     public class AuthenticationException : Exception
     {

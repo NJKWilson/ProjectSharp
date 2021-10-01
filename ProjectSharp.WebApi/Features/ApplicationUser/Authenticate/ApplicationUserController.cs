@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using ProjectSharp.WebApi.ApplicationUser.Authenticate;
+using ProjectSharp.Shared.ApplicationUser.Authenticate;
 
 namespace ProjectSharp.WebApi.Features.ApplicationUser.Authenticate
 {

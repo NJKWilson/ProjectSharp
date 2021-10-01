@@ -1,4 +1,4 @@
-namespace ProjectSharp.WebApi.ApplicationUser.Create
+namespace ProjectSharp.Shared.ApplicationUser.Create
 {
     public class ApplicationUserCreateResponse
     {

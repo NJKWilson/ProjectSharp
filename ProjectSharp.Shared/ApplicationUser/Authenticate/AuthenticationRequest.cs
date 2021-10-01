@@ -1,4 +1,4 @@
-namespace ProjectSharp.WebApi.ApplicationUser.Authenticate
+namespace ProjectSharp.Shared.ApplicationUser.Authenticate
 {
     public class AuthenticationRequest
     {

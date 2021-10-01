@@ -15,7 +15,7 @@ namespace ProjectSharp.WebUi.Features.WelcomePage
             _clientFactory = clientFactory;
         }
 
-        public async Task<string> GetHolidays(AuthenticationRequest holidaysRequest)
+        public async Task<string> GetHolidays(AuthenticationRequest2 holidaysRequest)
         {
             var result = "";
 

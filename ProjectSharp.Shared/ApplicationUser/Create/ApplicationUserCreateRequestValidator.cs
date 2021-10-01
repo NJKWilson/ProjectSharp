@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using ProjectSharp.WebApi.Exceptions;
-using ProjectSharp.WebApi.Extenstion;
+using ProjectSharp.Shared.Exceptions;
+using ProjectSharp.Shared.Extenstion;
 
-namespace ProjectSharp.WebApi.ApplicationUser.Create
+namespace ProjectSharp.Shared.ApplicationUser.Create
 {
     public static class ApplicationUserCreateRequestValidator
     {

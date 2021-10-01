@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using ProjectSharp.WebApi.ApplicationUser.Create;
+using ProjectSharp.Shared.ApplicationUser.Create;
 using ProjectSharp.WebApi.DbModel.ApplicationUser;
 
 namespace ProjectSharp.WebApi.Features.ApplicationUser.Create

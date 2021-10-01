@@ -23,11 +23,4 @@
       <Folder Include="WebUi" />
     </ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\ProjectSharp.WebApi\ProjectSharp.WebApi.csproj" />
-      <ProjectReference Include="..\ProjectSharp.WebUi\ProjectSharp.WebUi.csproj" />
-    </ItemGroup>
-
-    <Import Project="..\ProjectSharp.Shared\ProjectSharp.Shared.projitems" Label="Shared" />
-
 </Project>

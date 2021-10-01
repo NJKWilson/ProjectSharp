@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using ProjectSharp.WebApi.Exceptions;
-using ProjectSharp.WebApi.Extenstion;
+using ProjectSharp.Shared.Exceptions;
+using ProjectSharp.Shared.Extenstion;
 
-namespace ProjectSharp.WebApi.ApplicationUser.Authenticate
+namespace ProjectSharp.Shared.ApplicationUser.Authenticate
 {
     public static class AuthenticationRequestValidator
     {
