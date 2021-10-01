@@ -1,12 +1,10 @@
 using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using Microsoft.CodeAnalysis.Text;
-using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 using MongoDB.Driver;
-using ProjectSharp.WebApi.Common.Exceptions;
+using Newtonsoft.Json;
+using ProjectSharp.WebUi.ProjectSharp.Shared.Exceptions;
 
 namespace ProjectSharp.WebApi.Common.Middleware
 {
@@ -43,11 +41,11 @@ namespace ProjectSharp.WebApi.Common.Middleware
                     await SendResponse(httpContext, (int)HttpStatusCode.InternalServerError, 
                         "Server timed out check MongoDb");
                     break;
-                case RequestValidationException:
+                case ValidationException e:
                     await SendResponse(httpContext, (int)HttpStatusCode.BadRequest, 
-                        exception.Message, true);
+                        JsonConvert.SerializeObject(e.ErrorList), true);
                     break;
-                case ApplicationUserCredentialsException:
+                case AuthenticationException:
                     await SendResponse(httpContext, (int)HttpStatusCode.Forbidden, 
                         exception.Message, false);
                     break;

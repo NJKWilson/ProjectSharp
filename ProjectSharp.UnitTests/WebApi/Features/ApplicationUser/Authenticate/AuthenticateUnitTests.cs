@@ -1,8 +1,3 @@
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using ProjectSharp.WebApi.Common.Exceptions;
-using ProjectSharp.WebApi.Common.Extensions;
-using ProjectSharp.WebApi.Features.ApplicationUser.Authenticate;
 using Xunit;
 
 namespace ProjectSharp.UnitTests.WebApi.Features.ApplicationUser.Authenticate

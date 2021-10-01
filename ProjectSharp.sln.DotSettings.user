@@ -1,0 +1,16 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a59204cf_002D88ad_002D496c_002D8b56_002D021a4ff9f764/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ThrowsException" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::07431077-FDC7-4F5B-9BFC-BEC49AD0E659::net5.0::ProjectSharp.UnitTests.WebApi.Features.ApplicationUser.Authenticate.Authenticate.ThrowsException&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d03e3b0f_002D862f_002D40cf_002Dad22_002D993114ce0751/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ThrowsException #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::07431077-FDC7-4F5B-9BFC-BEC49AD0E659::net5.0::ProjectSharp.UnitTests.WebApi.Features.ApplicationUser.Authenticate.Authenticate&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f0a18f8e_002D28c9_002D4800_002D9a67_002Dc8e3dc6b5172/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ThrowsException #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::07431077-FDC7-4F5B-9BFC-BEC49AD0E659::net5.0::ProjectSharp.UnitTests.WebApi.Features.ApplicationUser.Authenticate.Authenticate.ThrowsException&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

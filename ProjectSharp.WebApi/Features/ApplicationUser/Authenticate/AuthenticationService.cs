@@ -1,12 +1,12 @@
-using System;
 using System.Threading.Tasks;
 using MongoDB.Driver;
 using ProjectSharp.WebApi.Brokers.BCryptBroker;
 using ProjectSharp.WebApi.Brokers.JwtToken;
 using ProjectSharp.WebApi.Brokers.MongoDb;
 using ProjectSharp.WebApi.Common.AppSettings;
-using ProjectSharp.WebApi.Common.Exceptions;
 using ProjectSharp.WebApi.DbModel.ApplicationUser;
+using ProjectSharp.WebUi.ProjectSharp.Shared.ApplicationUser.Authenticate;
+using ProjectSharp.WebUi.ProjectSharp.Shared.Exceptions;
 
 namespace ProjectSharp.WebApi.Features.ApplicationUser.Authenticate
 {
@@ -28,21 +28,33 @@ namespace ProjectSharp.WebApi.Features.ApplicationUser.Authenticate
         }
         public async ValueTask<AuthenticationResponse> Authenticate(AuthenticationRequest authenticationRequest)
         {
+            // Validate request model
             authenticationRequest.Validate();
-
+            
+            // Try to get user
             var user = await GetByUsername(authenticationRequest.Username);
             //todo exception
             if (user == null)
-                throw new ApplicationUserCredentialsException("User does not exist.");
+                throw new AuthenticationException("User does not exist.");
             
-            //todo exception
+            // Check password is correct
             if (!_passwordService.VerifyHash(authenticationRequest.Password, user.PasswordSalt, user.PasswordHash))
-                throw new ApplicationUserCredentialsException("Password incorrect.");
-
+                throw new AuthenticationException("Password incorrect.");
+            
+            // Generate jwt Token
             var token = _tokenService.BuildToken(_jwtSettings.Key, _jwtSettings.Issuer, user);
             
+            // Create the response model
+            var authenticationResponse = new AuthenticationResponse()
+            {
+                Id = user.Id.ToString(),
+                Username = user.Username,
+                Email = user.Email,
+                Role = user.Role,
+                Token = token
+            };
             
-            return new AuthenticationResponse(user, token);
+            return authenticationResponse;
         }
 
         private async Task<User> GetByUsername(string username)

@@ -1,10 +1,8 @@
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using Newtonsoft.Json;
-using ProjectSharp.WebUi.ProjectSharp.Shared.ApplicationUser.Authenticate;
+using ProjectSharp.WebUi.ProjectSharp.Shared.Exceptions;
 using ProjectSharp.WebUi.ProjectSharp.Shared.Extenstion;
 
-namespace ProjectSharp.WebApi.Features.ApplicationUser.Authenticate
+namespace ProjectSharp.WebUi.ProjectSharp.Shared.ApplicationUser.Authenticate
 {
     public static class AuthenticationRequestValidator
     {
@@ -17,13 +15,13 @@ namespace ProjectSharp.WebApi.Features.ApplicationUser.Authenticate
         public static bool Validate(this AuthenticationRequest authenticationRequest)
         {
             var errorList = new Dictionary<string, List<string>>();
-            
+
             UsernameIsNotNullOrWhiteSpace(authenticationRequest, errorList);
             PasswordIsNotNullOrWhiteSpace(authenticationRequest, errorList);
-            
+
             if (errorList.Count > 0)
-                throw new ValidationException(JsonConvert.SerializeObject(errorList));
-            
+                throw new ValidationException(errorList);
+
             return true;
         }
 
@@ -32,16 +30,16 @@ namespace ProjectSharp.WebApi.Features.ApplicationUser.Authenticate
         {
             if (string.IsNullOrWhiteSpace(authenticationRequest.Username))
                 errorList.AddOrUpdate(
-                    nameof(authenticationRequest.Username), 
+                    nameof(authenticationRequest.Username),
                     $"{nameof(authenticationRequest.Username)} cannot be empty.");
         }
-        
+
         private static void PasswordIsNotNullOrWhiteSpace(
             AuthenticationRequest authenticationRequest, Dictionary<string, List<string>> errorList)
         {
             if (string.IsNullOrWhiteSpace(authenticationRequest.Password))
                 errorList.AddOrUpdate(
-                    nameof(authenticationRequest.Password), 
+                    nameof(authenticationRequest.Password),
                     $"{nameof(authenticationRequest.Password)} cannot be empty.");
         }
     }

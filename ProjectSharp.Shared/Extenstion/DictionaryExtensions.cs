@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace ProjectSharp.WebApi.Common.Extensions
+namespace ProjectSharp.WebUi.ProjectSharp.Shared.Extenstion
 {
     public static class DictionaryExtensions
     {

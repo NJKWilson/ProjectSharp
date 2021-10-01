@@ -15,10 +15,12 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Features\ApplicationUser\Create" />
       <Folder Include="Features\ApplicationUser\Delete" />
       <Folder Include="Features\ApplicationUser\Get" />
+      <Folder Include="Features\ApplicationUser\ResetPassword" />
       <Folder Include="Features\ApplicationUser\Update" />
     </ItemGroup>
+
+    <Import Project="..\ProjectSharp.Shared\ProjectSharp.Shared.projitems" Label="Shared" />
 
 </Project>

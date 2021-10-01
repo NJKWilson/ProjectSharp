@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>8CCCFB4E-F7F6-4AA0-B813-5B70465C79FF</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>ProjectSharp.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ApplicationUser\Authenticate\AuthenticationRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ApplicationUser\Authenticate\AuthenticationRequestValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ApplicationUser\Authenticate\AuthenticationResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ApplicationUser\Create\ApplicationUserCreateRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ApplicationUser\Create\ApplicationUserCreateResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\AuthenticationException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\ValidationException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extenstion\DictionaryExtensions.cs" />
+  </ItemGroup>
+</Project>

@@ -1,6 +1,4 @@
-using System.Collections.Generic;
-
-namespace ProjectSharp.WebApi.Features.ApplicationUser.Authenticate
+namespace ProjectSharp.WebUi.ProjectSharp.Shared.ApplicationUser.Authenticate
 {
     public class AuthenticationRequest
     {
