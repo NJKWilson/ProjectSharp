@@ -33,7 +33,6 @@ namespace ProjectSharp.WebApi.Features.ApplicationUser.Authenticate
             
             // Try to get user
             var user = await GetByEmail(authenticationRequest.Email);
-            //todo exception
             if (user == null)
                 throw new AuthenticationException("User does not exist.");
             
