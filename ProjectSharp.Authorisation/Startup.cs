@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ProjectSharp.Authorisation.Brokers.Database;
 using ProjectSharp.Authorisation.Database;
 using ProjectSharp.Authorisation.Settings;
 using ProtoBuf.Grpc.Server;
@@ -13,7 +14,7 @@ namespace ProjectSharp.Authorisation
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton(ServiceSettingsBuilder.GetServiceSettings("ServiceSettings.json"));
-            services.AddSingleton<IDataContext, DataContext>();
+            services.AddSingleton<IDatabaseBroker, DatabaseBroker>();
             services.AddSingleton<ISeedDataService, SeedDataService>();
             services.AddGrpc();
             services.AddCodeFirstGrpc();
