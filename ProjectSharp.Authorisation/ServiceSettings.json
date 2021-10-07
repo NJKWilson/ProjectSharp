@@ -1,0 +1,7 @@
+{
+  "Key": "My Key",
+  "Issuer": "null",
+  "Audience": "null",
+  "ConnectionString": "mongodb://root:admin@localhost:27017",
+  "DatabaseName": "ProjectSharp"
+}
