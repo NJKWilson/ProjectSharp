@@ -1,4 +1,5 @@
 using System;
+using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
 using ProjectSharp.Authorisation.Entities;
 
@@ -6,18 +7,26 @@ namespace ProjectSharp.Authorisation.Database
 {
     public class SeedDataService : ISeedDataService
     {
+        private readonly ILogger<SeedDataService> _logger;
         private readonly IDataContext _dataContext;
         
-        public SeedDataService(IDataContext dataContext)
+        public SeedDataService(ILogger<SeedDataService> logger, IDataContext dataContext)
         {
+            _logger = logger;
             _dataContext = dataContext;
         }
 
         public void SeedAdminUser()
         {
+            _logger.LogInformation("Checking for admin account");
+
             if (!AdminUserExists())
+            {
+                _logger.LogInformation("Admin account found");
                 return;
-            
+            }
+                
+            _logger.LogInformation("Admin not account found, seeding Admin account");
             CreateUniqueIndexOnEmail();
             CreateAdminUser();
         }

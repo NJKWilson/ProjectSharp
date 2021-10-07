@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using ProjectSharp.Authorisation.Brokers.Database;
 using ProjectSharp.Authorisation.Database;
 using ProjectSharp.Authorisation.Settings;
@@ -15,6 +16,7 @@ namespace ProjectSharp.Authorisation
         {
             services.AddSingleton(ServiceSettingsBuilder.GetServiceSettings("ServiceSettings.json"));
             services.AddSingleton<IDatabaseBroker, DatabaseBroker>();
+            services.AddSingleton<IDataContext, DataContext>();
             services.AddSingleton<ISeedDataService, SeedDataService>();
             services.AddGrpc();
             services.AddCodeFirstGrpc();
@@ -23,13 +25,15 @@ namespace ProjectSharp.Authorisation
         public void Configure(
             IApplicationBuilder app, 
             IWebHostEnvironment env, 
-            ISeedDataService seedDataService)
+            ISeedDataService seedDataService,
+            ILogger<Startup> logger)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                logger.LogInformation("Running in Development!");
             }
-
+            
             seedDataService.SeedAdminUser();
 
             app.UseRouting();
