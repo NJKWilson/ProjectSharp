@@ -1,7 +1,4 @@
-using System.Threading.Tasks;
 using ProjectSharp.Authorisation.Brokers.Password;
-using ProjectSharp.Authorisation.Services;
-using ProjectSharp.Shared.Grpc;
 using Xunit;
 
 namespace ProjectSharp.Authorisation.Tests.Brokers.Password
@@ -13,11 +10,11 @@ namespace ProjectSharp.Authorisation.Tests.Brokers.Password
         {
             //given
             var passwordBroker = new PasswordBroker();
-            var testPassword = "testPassword";
+            const string testPassword = "testPassword";
 
             //when
 
-            var (hashedPassword, salt) = passwordBroker.HashPassword(testPassword);
+            var hashedPassword = passwordBroker.HashPassword(testPassword);
 
             //should
             Assert.True(passwordBroker.VerifyPassword(testPassword, hashedPassword));
