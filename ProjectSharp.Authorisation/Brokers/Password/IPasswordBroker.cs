@@ -2,7 +2,7 @@ namespace ProjectSharp.Authorisation.Brokers.Password
 {
     public interface IPasswordBroker
     {
-        string HashPassword(string password);
+        (string passwordHash, string salt) HashPassword(string password);
         bool VerifyPassword(string password, string passwordHash);
     }
 }

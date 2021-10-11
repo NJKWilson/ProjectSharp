@@ -2,14 +2,16 @@ namespace ProjectSharp.Authorisation.Brokers.Password
 {
     public class PasswordBroker : IPasswordBroker
     {
-        public string HashPassword(string password)
+        public (string passwordHash, string salt) HashPassword(string password)
         {
-            throw new System.NotImplementedException();
+            var salt = BCrypt.Net.BCrypt.GenerateSalt();
+            var passwordHash = BCrypt.Net.BCrypt.HashPassword(password, salt);
+            return (passwordHash, salt);
         }
 
         public bool VerifyPassword(string password, string passwordHash)
         {
-            throw new System.NotImplementedException();
+            return BCrypt.Net.BCrypt.Verify(password, passwordHash);
         }
     }
 }
