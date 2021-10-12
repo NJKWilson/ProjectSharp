@@ -1,4 +1,5 @@
 using MongoDB.Driver;
+using ProjectSharp.Authorisation.Brokers.Settings;
 using ProjectSharp.Authorisation.Entities;
 using ProjectSharp.Authorisation.Settings;
 
@@ -8,13 +9,13 @@ namespace ProjectSharp.Authorisation.Brokers.Database
     {
         private const string UserCollectionName = "Users";
 
-        private IMongoCollection<User> _usersCollection;
+        private readonly IMongoCollection<User> _usersCollection;
 
-        public DatabaseBroker(IServiceSettings serviceSettings)
+        public DatabaseBroker(ISettingsBroker settingsBroker)
         {
-            var client = new MongoClient(serviceSettings.ConnectionString);
-
-            var database = client.GetDatabase(serviceSettings.DatabaseName);
+            var settings = settingsBroker.LoadSettings();
+            var client = new MongoClient(settings.ConnectionString);
+            var database = client.GetDatabase(settings.DatabaseName);
 
             _usersCollection = database.GetCollection<User>(UserCollectionName);
         }

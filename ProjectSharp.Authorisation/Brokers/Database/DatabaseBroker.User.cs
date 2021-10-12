@@ -8,6 +8,15 @@ namespace ProjectSharp.Authorisation.Brokers.Database
 {
     public partial class DatabaseBroker
     {
+        public async Task CreateIndexOnEmail()
+        {
+            var indexKeyDefinition = Builders<User>.IndexKeys.Ascending(user => user.Email);
+            var indexOptions = new CreateIndexOptions() {Unique = true};
+            var indexModel = new CreateIndexModel<User>(indexKeyDefinition, indexOptions);
+
+            await _usersCollection.Indexes.CreateOneAsync(indexModel);
+        }
+
         public async ValueTask<User> InsertUserAsync(User user)
         {
             await _usersCollection.InsertOneAsync(user);

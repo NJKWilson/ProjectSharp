@@ -20,7 +20,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ProjectSharp.Authorisation\ProjectSharp.Authorisation.csproj" />
+        <ProjectReference Include="..\ProjectSharp.Authorisation\ProjectSharp.Authorisation.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Settings"/>
     </ItemGroup>
 
 </Project>

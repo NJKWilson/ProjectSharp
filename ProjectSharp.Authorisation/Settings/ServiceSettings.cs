@@ -1,6 +1,3 @@
-using System.IO;
-using System.Text.Json;
-
 namespace ProjectSharp.Authorisation.Settings
 {
     public class ServiceSettings : IServiceSettings

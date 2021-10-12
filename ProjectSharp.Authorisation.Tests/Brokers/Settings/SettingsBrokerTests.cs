@@ -1,6 +1,4 @@
 using System.IO;
-using System.Text.Json;
-using System.Threading.Tasks;
 using ProjectSharp.Authorisation.Brokers.Settings;
 using ProjectSharp.Authorisation.Settings;
 using Xunit;
@@ -24,7 +22,7 @@ namespace ProjectSharp.Authorisation.Tests.Brokers.Settings
                 DatabaseName = "DatabaseName"
             };
 
-            settingsBroker.SaveSettings(filename, serviceSettingsMock);
+            settingsBroker.SaveSettings(serviceSettingsMock, filename);
 
             var serviceSettingsFromFile = settingsBroker.LoadSettings(filename);
 
