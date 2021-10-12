@@ -1,6 +1,7 @@
 using MongoDB.Driver;
 using ProjectSharp.Authorisation.Brokers.Settings;
 using ProjectSharp.Authorisation.Entities;
+using ProjectSharp.Authorisation.Entities.User;
 using ProjectSharp.Authorisation.Settings;
 
 namespace ProjectSharp.Authorisation.Brokers.Database

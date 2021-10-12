@@ -1,4 +1,4 @@
-namespace ProjectSharp.Authorisation.Entities
+namespace ProjectSharp.Authorisation.Entities.User
 {
     public enum UserRole
     {

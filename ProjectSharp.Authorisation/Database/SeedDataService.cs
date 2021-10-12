@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using ProjectSharp.Authorisation.Brokers.Database;
 using ProjectSharp.Authorisation.Brokers.Password;
 using ProjectSharp.Authorisation.Entities;
+using ProjectSharp.Authorisation.Entities.User;
 
 namespace ProjectSharp.Authorisation.Database
 {

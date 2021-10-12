@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using ProjectSharp.Authorisation.Services;
+using ProjectSharp.Authorisation.EndPoints;
 using ProjectSharp.Shared.Grpc;
 using Xunit;
 
@@ -17,12 +17,12 @@ namespace ProjectSharp.Authorisation.Tests.Services
                 Username = "admin@psharp.com",
                 Password = "admin"
             };
-            
+
             //when
 
             //should
             await Assert.ThrowsAsync<System.NotImplementedException>(
-                async ()  => await authorisationService.AuthoriseAsync(authoriseRequestModel));
+                async () => await authorisationService.AuthoriseAsync(authoriseRequestModel));
         }
     }
 }

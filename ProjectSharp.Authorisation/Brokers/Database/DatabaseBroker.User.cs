@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using ProjectSharp.Authorisation.Entities;
+using ProjectSharp.Authorisation.Entities.User;
 
 namespace ProjectSharp.Authorisation.Brokers.Database
 {
