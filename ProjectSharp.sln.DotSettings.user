@@ -5,6 +5,7 @@
     &lt;TestId&gt;xUnit::44B2B67D-F269-4020-8407-A0ADFA2A1866::net5.0::ProjectSharp.Authorisation.Tests.Settings.ServiceSettingsTests.AuthorisationService_Throws_NotImplemented&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::44B2B67D-F269-4020-8407-A0ADFA2A1866::net5.0::ProjectSharp.Authorisation.Tests.Brokers.Password.PasswordBrokerTests.AuthorisationService_Throws_NotImplemented&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::44B2B67D-F269-4020-8407-A0ADFA2A1866::net5.0::ProjectSharp.Authorisation.Tests.Brokers.Password.PasswordBrokerTests.PasswordBroker_GeneratesAndVerifiesPassword_Pass&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::44B2B67D-F269-4020-8407-A0ADFA2A1866::net5.0::ProjectSharp.Authorisation.Tests.Brokers.Settings.SettingsBrokerTests.SettingsBroker_SavesAndLoadsSettings_Pass&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	</wpf:ResourceDictionary>

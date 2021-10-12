@@ -8,13 +8,15 @@ namespace ProjectSharp.Authorisation.Brokers.Database
     {
         private const string UserCollectionName = "Users";
 
+        private IMongoCollection<User> _usersCollection;
+
         public DatabaseBroker(IServiceSettings serviceSettings)
         {
             var client = new MongoClient(serviceSettings.ConnectionString);
+
             var database = client.GetDatabase(serviceSettings.DatabaseName);
 
             _usersCollection = database.GetCollection<User>(UserCollectionName);
-            
         }
     }
 }

@@ -1,6 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using ProjectSharp.Authorisation.Entities;
 
@@ -8,31 +8,45 @@ namespace ProjectSharp.Authorisation.Brokers.Database
 {
     public partial class DatabaseBroker
     {
-        private IMongoCollection<User> _usersCollection;
-        
-        public ValueTask<User> InsertUserAsync(User user)
+        public async ValueTask<User> InsertUserAsync(User user)
         {
-            throw new NotImplementedException();
+            await _usersCollection.InsertOneAsync(user);
+            return await FindUserByEmailAsync(user.Email);
         }
 
-        public IEnumerable<User> SelectAllUsersAsync()
+        public async ValueTask<IEnumerable<User>> FindAllUsersAsync()
         {
-            throw new NotImplementedException();
+            var searchFilter = Builders<User>.Filter.Empty;
+            return await _usersCollection.Find(searchFilter).ToListAsync();
         }
 
-        public ValueTask<User> SelectUserByIdAsync(string userId)
+        public async ValueTask<User> FindUserByIdAsync(string userId)
         {
-            throw new NotImplementedException();
+            var searchFilter = Builders<User>.Filter.Where(user => user.Id == ObjectId.Parse(userId));
+            return await _usersCollection.Find(searchFilter).FirstOrDefaultAsync();
         }
 
-        public ValueTask<User> UpdateUserAsync(User user)
+        public async ValueTask<User> FindUserByEmailAsync(string userEmail)
         {
-            throw new NotImplementedException();
+            var searchFilter = Builders<User>.Filter.Where(user => user.Email == userEmail);
+            return await _usersCollection.Find(searchFilter).FirstOrDefaultAsync();
         }
 
-        public ValueTask<User> DeleteUserAsync(User user)
+        public async ValueTask<User> UpdateUserAsync(User updatedUser)
         {
-            throw new NotImplementedException();
+            var searchFilter = Builders<User>.Filter.Where(user => user.Id == updatedUser.Id);
+            var findOneReplaceOneOptions = new FindOneAndReplaceOptions<User>
+            {
+                IsUpsert = false,
+                ReturnDocument = ReturnDocument.After
+            };
+            return await _usersCollection.FindOneAndReplaceAsync(searchFilter, updatedUser, findOneReplaceOneOptions);
+        }
+
+        public async ValueTask<User> DeleteUserAsync(string userId)
+        {
+            var searchFilter = Builders<User>.Filter.Where(user => user.Id == ObjectId.Parse(userId));
+            return await _usersCollection.FindOneAndDeleteAsync(searchFilter);
         }
     }
 }
