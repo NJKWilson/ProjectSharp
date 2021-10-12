@@ -1,17 +1,22 @@
+using System.IO;
+using System.Text.Json;
+using Microsoft.AspNetCore.Routing.Constraints;
 using ProjectSharp.Authorisation.Settings;
 
 namespace ProjectSharp.Authorisation.Brokers.Settings
 {
     public class SettingsBroker : ISettingsBroker
     {
-        public IServiceSettings LoadSettings()
+        public IServiceSettings LoadSettings(string filename)
         {
-            throw new System.NotImplementedException();
+            return JsonSerializer.Deserialize<ServiceSettings>(File.ReadAllText(filename));
         }
 
-        public void SaveSettings(IServiceSettings settings)
+        public void SaveSettings(string filename, IServiceSettings settings)
         {
-            throw new System.NotImplementedException();
+            var jwtSettingsString = JsonSerializer.Serialize(settings);
+
+            File.WriteAllText(filename, jwtSettingsString);
         }
     }
 }

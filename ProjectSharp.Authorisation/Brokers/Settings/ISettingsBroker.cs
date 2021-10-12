@@ -4,7 +4,7 @@ namespace ProjectSharp.Authorisation.Brokers.Settings
 {
     public interface ISettingsBroker
     {
-        IServiceSettings LoadSettings();
-        void SaveSettings(IServiceSettings settings);
+        IServiceSettings LoadSettings(string filename);
+        void SaveSettings(string filename, IServiceSettings settings);
     }
 }
