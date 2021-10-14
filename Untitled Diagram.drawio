@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-10-14T21:32:34.780Z" agent="5.0 (X11)" etag="JoiKRrZFi_oS3cFXdjMQ" version="15.5.2" type="github">
+<mxfile host="app.diagrams.net" modified="2021-10-14T21:55:19.736Z" agent="5.0 (X11)" etag="So0y_yq77BdyNhLySxme" version="15.5.2" type="github">
   <diagram id="YZV39YvzYVO9GJUBDcFP" name="Page-1">
     <mxGraphModel dx="2391" dy="1119" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -43,16 +43,16 @@
         <mxCell id="ZC-AyXRhmPSGSsGeXLF2-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jumpStyle=none;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="ZC-AyXRhmPSGSsGeXLF2-16" target="ZC-AyXRhmPSGSsGeXLF2-3">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="240" y="535" />
-              <mxPoint x="240" y="445" />
+              <mxPoint x="260" y="535" />
+              <mxPoint x="260" y="445" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="ZC-AyXRhmPSGSsGeXLF2-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jumpStyle=none;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ZC-AyXRhmPSGSsGeXLF2-16" target="ZC-AyXRhmPSGSsGeXLF2-13">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="240" y="565" />
-              <mxPoint x="240" y="670" />
+              <mxPoint x="260" y="565" />
+              <mxPoint x="260" y="670" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -67,19 +67,19 @@
         <mxCell id="ZC-AyXRhmPSGSsGeXLF2-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jumpStyle=none;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ZC-AyXRhmPSGSsGeXLF2-17" target="ZC-AyXRhmPSGSsGeXLF2-16">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="-40" y="445" />
-              <mxPoint x="-40" y="550" />
+              <mxPoint x="-20" y="445" />
+              <mxPoint x="-20" y="550" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="ZC-AyXRhmPSGSsGeXLF2-17" value="User Manager" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
           <mxGeometry x="-200" y="400" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="ZC-AyXRhmPSGSsGeXLF2-37" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;i&gt;&lt;br&gt;&lt;/i&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;i&gt;IAuthernticationService&lt;/i&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ Register(User): User&lt;br&gt;+ Login(String, String): String&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ Logout(Id)&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" vertex="1" parent="1">
-          <mxGeometry x="57.5" y="600" width="165" height="140" as="geometry" />
+        <mxCell id="ZC-AyXRhmPSGSsGeXLF2-37" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;i&gt;&lt;br&gt;&lt;/i&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;i&gt;IAuthernticationService&lt;/i&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ Register(user,pass): bool&lt;br&gt;+ Login(email,pass): token&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ VerifyToken(token):bool&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ RevokeToken(token)&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ ResetPassword(id,pass):bool&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" vertex="1" parent="1">
+          <mxGeometry x="42.5" y="600" width="195" height="140" as="geometry" />
         </mxCell>
         <mxCell id="ZC-AyXRhmPSGSsGeXLF2-39" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;i&gt;&lt;br&gt;&lt;/i&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;i&gt;IUserService&lt;/i&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ AddUser(User)&lt;br&gt;+ GetUser(String): User&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ Update(User): User&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ Delete(String): User&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" vertex="1" parent="1">
-          <mxGeometry x="337.5" y="240" width="165" height="140" as="geometry" />
+          <mxGeometry x="328" y="240" width="195" height="140" as="geometry" />
         </mxCell>
         <mxCell id="ZC-AyXRhmPSGSsGeXLF2-51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jumpStyle=none;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ZC-AyXRhmPSGSsGeXLF2-50" target="ZC-AyXRhmPSGSsGeXLF2-17">
           <mxGeometry relative="1" as="geometry" />
