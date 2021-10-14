@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using ProjectSharp.Authorisation.Entities;
 using ProjectSharp.Authorisation.Entities.User;
 
 namespace ProjectSharp.Authorisation.Brokers.Database
