@@ -16,9 +16,4 @@
       <ProjectReference Include="..\ProjectSharp.Shared.Grpc\ProjectSharp.Shared.Grpc.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-        <Folder Include="Entities\User\Exceptions"/>
-        <Folder Include="Services\Foundation"/>
-    </ItemGroup>
-
 </Project>
