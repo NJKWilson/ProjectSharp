@@ -18,7 +18,7 @@
 
     <ItemGroup>
         <Folder Include="Entities\User\Exceptions"/>
-        <Folder Include="Services"/>
+        <Folder Include="Services\Foundation"/>
     </ItemGroup>
 
 </Project>

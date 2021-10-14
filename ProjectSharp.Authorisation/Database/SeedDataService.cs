@@ -70,7 +70,7 @@ namespace ProjectSharp.Authorisation.Database
                 FamilyName = "PSharp",
                 Email = "admin@psharp.com",
                 Role = UserRole.Admin.ToString(),
-                PasswordHash = _stringHashBroker.HashPassword("admin"),
+                PasswordHash = _stringHashBroker.HashString("admin"),
                 CreatedDate = DateTimeOffset.Now,
                 CreatedBy = "System",
                 UpdatedDate = DateTimeOffset.Now,

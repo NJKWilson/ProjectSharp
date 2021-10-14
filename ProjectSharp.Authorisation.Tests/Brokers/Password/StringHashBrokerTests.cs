@@ -14,10 +14,10 @@ namespace ProjectSharp.Authorisation.Tests.Brokers.Password
 
             //when
 
-            var hashedPassword = stringHashBroker.HashPassword(testPassword);
+            var hashedPassword = stringHashBroker.HashString(testPassword);
 
             //should
-            Assert.True(stringHashBroker.VerifyPassword(testPassword, hashedPassword));
+            Assert.True(stringHashBroker.VerifyHashedString(testPassword, hashedPassword));
         }
     }
 }

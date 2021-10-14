@@ -2,16 +2,12 @@ namespace ProjectSharp.Authorisation.Brokers.Password
 {
     public class StringHashBroker : IStringHashBroker
     {
-        public string HashPassword(string password)
-        {
-            var salt = BCrypt.Net.BCrypt.GenerateSalt();
-            var passwordHash = BCrypt.Net.BCrypt.HashPassword(password, salt);
-            return passwordHash;
-        }
+        private string GenerateSalt() => BCrypt.Net.BCrypt.GenerateSalt();
 
-        public bool VerifyPassword(string password, string passwordHash)
-        {
-            return BCrypt.Net.BCrypt.Verify(password, passwordHash);
-        }
+        public string HashString(string inputString)
+            => BCrypt.Net.BCrypt.HashPassword(inputString, GenerateSalt());
+
+        public bool VerifyHashedString(string inputString, string inputStringHash) =>
+            BCrypt.Net.BCrypt.Verify(inputString, inputStringHash);
     }
 }
