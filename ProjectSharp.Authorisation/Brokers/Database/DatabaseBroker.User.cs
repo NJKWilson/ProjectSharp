@@ -18,10 +18,9 @@ namespace ProjectSharp.Authorisation.Brokers.Database
             await _usersCollection.Indexes.CreateOneAsync(indexModel);
         }
 
-        public async ValueTask<User> InsertUserAsync(User user)
+        public async ValueTask InsertUserAsync(User user)
         {
             await _usersCollection.InsertOneAsync(user);
-            return await FindUserByEmailAsync(user.Email);
         }
 
         public async ValueTask<IEnumerable<User>> FindAllUsersAsync()
