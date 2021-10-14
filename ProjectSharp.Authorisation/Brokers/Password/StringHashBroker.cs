@@ -1,6 +1,6 @@
 namespace ProjectSharp.Authorisation.Brokers.Password
 {
-    public class PasswordBroker : IPasswordBroker
+    public class StringHashBroker : IStringHashBroker
     {
         public string HashPassword(string password)
         {

@@ -16,7 +16,7 @@ namespace ProjectSharp.Authorisation
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IDatabaseBroker, DatabaseBroker>();
-            services.AddSingleton<IPasswordBroker, PasswordBroker>();
+            services.AddSingleton<IStringHashBroker, StringHashBroker>();
             services.AddSingleton<ISettingsBroker, SettingsBroker>();
 
             //services.AddSingleton<IDataContext, DataContext>();

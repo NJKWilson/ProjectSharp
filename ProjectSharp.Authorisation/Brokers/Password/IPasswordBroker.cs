@@ -1,6 +1,6 @@
 namespace ProjectSharp.Authorisation.Brokers.Password
 {
-    public interface IPasswordBroker
+    public interface IStringHashBroker
     {
         string HashPassword(string password);
         bool VerifyPassword(string password, string passwordHash);

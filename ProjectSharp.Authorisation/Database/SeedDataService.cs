@@ -12,16 +12,16 @@ namespace ProjectSharp.Authorisation.Database
     {
         private readonly ILogger<SeedDataService> _logger;
         private readonly IDatabaseBroker _databaseBroker;
-        private readonly IPasswordBroker _passwordBroker;
+        private readonly IStringHashBroker _stringHashBroker;
 
         public SeedDataService(
             ILogger<SeedDataService> logger,
             IDatabaseBroker databaseBroker,
-            IPasswordBroker passwordBroker)
+            IStringHashBroker stringHashBroker)
         {
             _logger = logger;
             _databaseBroker = databaseBroker;
-            _passwordBroker = passwordBroker;
+            _stringHashBroker = stringHashBroker;
         }
 
         public async Task SeedAdminUser()
@@ -70,7 +70,7 @@ namespace ProjectSharp.Authorisation.Database
                 FamilyName = "PSharp",
                 Email = "admin@psharp.com",
                 Role = UserRole.Admin.ToString(),
-                PasswordHash = _passwordBroker.HashPassword("admin"),
+                PasswordHash = _stringHashBroker.HashPassword("admin"),
                 CreatedDate = DateTimeOffset.Now,
                 CreatedBy = "System",
                 UpdatedDate = DateTimeOffset.Now,
