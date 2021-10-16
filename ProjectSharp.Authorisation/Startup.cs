@@ -5,9 +5,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using ProjectSharp.Authorisation.Brokers.Database;
-using ProjectSharp.Authorisation.Brokers.Password;
-using ProjectSharp.Authorisation.Brokers.Settings;
 using ProjectSharp.Authorisation.Entities.User;
 using ProjectSharp.Authorisation.Migrations;
 using ProtoBuf.Grpc.Server;
@@ -20,14 +17,6 @@ namespace ProjectSharp.Authorisation
         {
             
             var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
-            
-            services.AddSingleton<IDatabaseBroker, DatabaseBroker>();
-            services.AddSingleton<IStringHashBroker, StringHashBroker>();
-            services.AddTransient<ISettingsBroker, SettingsBroker>();
-
-            //services.AddSingleton<IDataContext, DataContext>();
-            //services.AddTransient<ISeedDataService, SeedDataService>();
-            
             
             services.AddIdentity<User, UserRole>()
                 .AddMongoDbStores<User, UserRole, Guid>
