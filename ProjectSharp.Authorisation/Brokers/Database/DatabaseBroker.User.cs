@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MongoDB.Bson;
@@ -28,9 +29,9 @@ namespace ProjectSharp.Authorisation.Brokers.Database
             return await _usersCollection.Find(searchFilter).ToListAsync();
         }
 
-        public async ValueTask<User> FindUserByIdAsync(string userId)
+        public async ValueTask<User> FindUserByIdAsync(Guid userId)
         {
-            var searchFilter = Builders<User>.Filter.Where(user => user.Id == ObjectId.Parse(userId));
+            var searchFilter = Builders<User>.Filter.Where(user => user.Id == userId);
             return await _usersCollection.Find(searchFilter).FirstOrDefaultAsync();
         }
 
@@ -51,9 +52,9 @@ namespace ProjectSharp.Authorisation.Brokers.Database
             return await _usersCollection.FindOneAndReplaceAsync(searchFilter, updatedUser, findOneReplaceOneOptions);
         }
 
-        public async ValueTask<User> DeleteUserAsync(string userId)
+        public async ValueTask<User> DeleteUserAsync(Guid userId)
         {
-            var searchFilter = Builders<User>.Filter.Where(user => user.Id == ObjectId.Parse(userId));
+            var searchFilter = Builders<User>.Filter.Where(user => user.Id == userId);
             return await _usersCollection.FindOneAndDeleteAsync(searchFilter);
         }
     }

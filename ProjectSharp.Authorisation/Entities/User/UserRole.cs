@@ -1,9 +1,10 @@
+using System;
+using AspNetCore.Identity.MongoDbCore.Models;
+
 namespace ProjectSharp.Authorisation.Entities.User
 {
-    public enum UserRole
+    public class UserRole : MongoIdentityRole<Guid>
     {
-        Admin,
-        User,
-        Disabled
+
     }
 }

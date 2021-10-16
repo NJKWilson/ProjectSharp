@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -7,6 +8,7 @@ using ProjectSharp.Authorisation.Brokers.Database;
 using ProjectSharp.Authorisation.Brokers.Password;
 using ProjectSharp.Authorisation.Brokers.Settings;
 using ProjectSharp.Authorisation.Database;
+using ProjectSharp.Authorisation.Entities.User;
 using ProtoBuf.Grpc.Server;
 
 namespace ProjectSharp.Authorisation
@@ -15,12 +17,23 @@ namespace ProjectSharp.Authorisation
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            
+            var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
+            
             services.AddSingleton<IDatabaseBroker, DatabaseBroker>();
             services.AddSingleton<IStringHashBroker, StringHashBroker>();
-            services.AddSingleton<ISettingsBroker, SettingsBroker>();
+            services.AddTransient<ISettingsBroker, SettingsBroker>();
 
             //services.AddSingleton<IDataContext, DataContext>();
-            services.AddSingleton<ISeedDataService, SeedDataService>();
+            services.AddTransient<ISeedDataService, SeedDataService>();
+            
+            
+            services.AddIdentity<User, UserRole>()
+                .AddMongoDbStores<User, UserRole, Guid>
+                (
+                    connectionString, "identity"
+                );
+            
             services.AddGrpc();
             services.AddCodeFirstGrpc();
         }
@@ -37,7 +50,7 @@ namespace ProjectSharp.Authorisation
                 logger.LogInformation("Running in Development!");
             }
 
-            seedDataService.SeedAdminUser();
+            seedDataService.SeedAdminUser().Wait();
 
             app.UseRouting();
 

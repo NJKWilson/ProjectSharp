@@ -1,8 +1,10 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProjectSharp.Authorisation.Database;
+using ProjectSharp.Authorisation.Entities.User;
 
 namespace ProjectSharp.Authorisation
 {
@@ -12,8 +14,10 @@ namespace ProjectSharp.Authorisation
         {
             var host = CreateHostBuilder(args).Build();
 
-            var seedDataService = host.Services.GetRequiredService<ISeedDataService>();
-            await seedDataService.SeedAdminUser();
+            //await host.Services.GetRequiredService<ISeedDataService>().SeedAdminUser();
+
+
+
 
             await host.RunAsync();
         }

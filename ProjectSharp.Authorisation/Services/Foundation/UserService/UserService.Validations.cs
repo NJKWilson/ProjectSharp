@@ -33,9 +33,9 @@ namespace ProjectSharp.Authorisation.Services.Foundation.UserService
             }
         }
 
-        private static dynamic IsInvalidX(ObjectId id) => new
+        private static dynamic IsInvalidX(Guid id) => new
         {
-            Condition = id == ObjectId.Empty,
+            Condition = id == Guid.Empty,
             Message = "Id is required"
         };
 
