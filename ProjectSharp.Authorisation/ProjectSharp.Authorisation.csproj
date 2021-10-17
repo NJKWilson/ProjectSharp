@@ -20,7 +20,6 @@
 
     <ItemGroup>
       <Folder Include="Models\Users\Exceptions" />
-      <Folder Include="Services\Foundation\Passwords\Exceptions" />
     </ItemGroup>
 
 </Project>
