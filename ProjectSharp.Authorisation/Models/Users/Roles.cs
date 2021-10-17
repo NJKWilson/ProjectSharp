@@ -1,4 +1,4 @@
-namespace ProjectSharp.Authorisation.Models.ApplicationUser
+namespace ProjectSharp.Authorisation.Models.Users
 {
     public enum Roles
     {

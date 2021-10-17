@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
-using ProjectSharp.Authorisation.Models.ApplicationUser;
+using ProjectSharp.Authorisation.Models.Users;
 
 namespace ProjectSharp.Authorisation.Brokers.Token
 {

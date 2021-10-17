@@ -1,4 +1,4 @@
-using ProjectSharp.Authorisation.Models.ApplicationUser;
+using ProjectSharp.Authorisation.Models.Users;
 
 namespace ProjectSharp.Authorisation.Brokers.Token
 {

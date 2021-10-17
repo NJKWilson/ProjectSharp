@@ -1,6 +1,6 @@
 using MongoDB.Bson;
 
-namespace ProjectSharp.Authorisation.Models.ApplicationUser
+namespace ProjectSharp.Authorisation.Models.Users
 {
     public class ApplicationUserModel
     {

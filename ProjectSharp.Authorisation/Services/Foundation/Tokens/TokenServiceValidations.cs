@@ -1,7 +1,7 @@
-using ProjectSharp.Authorisation.Models.ApplicationUser;
 using ProjectSharp.Authorisation.Models.Token.Exceptions;
+using ProjectSharp.Authorisation.Models.Users;
 
-namespace ProjectSharp.Authorisation.Services.Foundation.TokenService
+namespace ProjectSharp.Authorisation.Services.Foundation.Tokens
 {
     public static class TokenServiceValidations
     {

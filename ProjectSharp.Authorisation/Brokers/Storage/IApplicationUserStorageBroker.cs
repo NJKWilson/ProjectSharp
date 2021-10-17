@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using MongoDB.Bson;
-using ProjectSharp.Authorisation.Models.ApplicationUser;
+using ProjectSharp.Authorisation.Models.Users;
 
 namespace ProjectSharp.Authorisation.Brokers.Storage
 {

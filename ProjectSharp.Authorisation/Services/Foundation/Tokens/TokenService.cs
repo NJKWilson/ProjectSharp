@@ -1,8 +1,8 @@
 using System;
 using ProjectSharp.Authorisation.Brokers.Token;
-using ProjectSharp.Authorisation.Models.ApplicationUser;
+using ProjectSharp.Authorisation.Models.Users;
 
-namespace ProjectSharp.Authorisation.Services.Foundation.TokenService
+namespace ProjectSharp.Authorisation.Services.Foundation.Tokens
 {
     public class TokenService : ITokenService
     {

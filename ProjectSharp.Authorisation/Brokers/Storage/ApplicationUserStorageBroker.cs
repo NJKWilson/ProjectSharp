@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using ProjectSharp.Authorisation.Brokers.Password;
-using ProjectSharp.Authorisation.Models.ApplicationUser;
+using ProjectSharp.Authorisation.Models.Users;
 
 namespace ProjectSharp.Authorisation.Brokers.Storage
 {

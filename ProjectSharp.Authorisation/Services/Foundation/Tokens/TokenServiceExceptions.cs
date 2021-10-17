@@ -1,6 +1,6 @@
 using System;
 
-namespace ProjectSharp.Authorisation.Services.Foundation.TokenService
+namespace ProjectSharp.Authorisation.Services.Foundation.Tokens
 {
     public static class TokenServiceExceptions
     {
