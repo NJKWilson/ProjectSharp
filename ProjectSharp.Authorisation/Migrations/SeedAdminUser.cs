@@ -11,15 +11,15 @@ namespace ProjectSharp.Authorisation.Migrations
     {
         public static async Task SeedAdminUser(
             ILogger logger, 
-            IMongoCollection<ApplicationUserModel> applicationUserCollection, 
+            IMongoCollection<User> applicationUserCollection, 
             IPasswordBroker passwordBroker)
         {
-            var searchFilter = Builders<ApplicationUserModel>.Filter.Where(user => user.Role == Roles.Admin.ToString());
+            var searchFilter = Builders<User>.Filter.Where(user => user.Role == Roles.Admin.ToString());
             var maybeAdminUser = await applicationUserCollection.Find(searchFilter).FirstOrDefaultAsync();
             if (maybeAdminUser is not null)
                 return;
             
-            var adminUser = new ApplicationUserModel
+            var adminUser = new User
             {
                 Email = "Administrator",
                 Role = Roles.Admin.ToString(),

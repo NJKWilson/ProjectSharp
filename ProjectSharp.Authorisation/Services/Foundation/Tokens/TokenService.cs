@@ -18,15 +18,15 @@ namespace ProjectSharp.Authorisation.Services.Foundation.Tokens
             _issuer = Guid.NewGuid().ToString();
         }
 
-        public string BuildToken(string audience, ApplicationUserModel applicationUserModel) =>
+        public string BuildToken(string audience, User user) =>
             TokenServiceExceptions.TryCatch(
                 () =>
                 {
                     TokenServiceValidations.ValidateAudienceInput(audience);
-                    TokenServiceValidations.ValidateApplicationUserModel(applicationUserModel);
+                    TokenServiceValidations.ValidateApplicationUserModel(user);
 
                     return _tokenBroker.BuildToken(_issuer, audience, _jwtSigningKey, ExpiryDurationMinutes,
-                        applicationUserModel);
+                        user);
                 }
             );
 

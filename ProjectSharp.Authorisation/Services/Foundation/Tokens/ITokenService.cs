@@ -8,9 +8,9 @@ namespace ProjectSharp.Authorisation.Services.Foundation.Tokens
         /// Builds a token.
         /// </summary>
         /// <param name="audience"></param>
-        /// <param name="applicationUserModel"></param>
+        /// <param name="user"></param>
         /// <returns></returns>
-        string BuildToken(string audience, ApplicationUserModel applicationUserModel);
+        string BuildToken(string audience, User user);
 
         /// <summary>
         /// Validates a token and returns the user id if valid

@@ -13,7 +13,7 @@ namespace ProjectSharp.Authorisation.Services.Foundation.Tokens
             }
         }
         
-        public static void ValidateApplicationUserModel(ApplicationUserModel applicationUserModel)
+        public static void ValidateApplicationUserModel(User user)
         {
             
         }

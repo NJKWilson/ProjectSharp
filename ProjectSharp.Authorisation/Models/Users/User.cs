@@ -2,7 +2,7 @@ using MongoDB.Bson;
 
 namespace ProjectSharp.Authorisation.Models.Users
 {
-    public class ApplicationUserModel
+    public class User
     {
         public ObjectId Id { get; set; }
         public string Email { get; set; }

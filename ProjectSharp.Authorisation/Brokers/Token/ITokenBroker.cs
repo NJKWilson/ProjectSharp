@@ -18,7 +18,7 @@ namespace ProjectSharp.Authorisation.Brokers.Token
             string audience, 
             string jwtSigningKey, 
             int expiryDurationMinutes,
-            ApplicationUserModel user);
+            User user);
 
         /// <summary>
         /// Validates a token and returns the user id if valid

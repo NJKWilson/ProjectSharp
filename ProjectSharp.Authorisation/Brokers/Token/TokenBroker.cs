@@ -12,7 +12,7 @@ namespace ProjectSharp.Authorisation.Brokers.Token
     {
         public string BuildToken(
             string issuer, string audience, string jwtSigningKey, int expiryDurationMinutes,
-            ApplicationUserModel user)
+            User user)
         {
             var mySecurityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSigningKey));
             var tokenHandler = new JwtSecurityTokenHandler();

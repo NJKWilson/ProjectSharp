@@ -1,6 +1,6 @@
 namespace ProjectSharp.Authorisation.Services.Foundation.Users
 {
-    public interface IApplicationUserService
+    public interface IUserService
     {
         
     }
