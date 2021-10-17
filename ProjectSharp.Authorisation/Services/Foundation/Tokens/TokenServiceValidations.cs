@@ -1,6 +1,7 @@
 using MongoDB.Bson;
 using ProjectSharp.Authorisation.Models.Token.Exceptions;
 using ProjectSharp.Authorisation.Models.Users;
+using ProjectSharp.Authorisation.Services.Foundation.Tokens.Exceptions;
 
 namespace ProjectSharp.Authorisation.Services.Foundation.Tokens
 {

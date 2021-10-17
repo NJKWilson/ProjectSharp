@@ -1,6 +1,6 @@
 using System;
 
-namespace ProjectSharp.Authorisation.Models.Token.Exceptions
+namespace ProjectSharp.Authorisation.Services.Foundation.Tokens.Exceptions
 {
     public class TokenServiceValidationException : Exception
     {
