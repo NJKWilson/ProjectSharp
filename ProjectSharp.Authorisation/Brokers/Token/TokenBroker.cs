@@ -42,21 +42,21 @@ namespace ProjectSharp.Authorisation.Brokers.Token
             var mySecret = Encoding.UTF8.GetBytes(jwtSigningKey);
             var mySecurityKey = new SymmetricSecurityKey(mySecret);
             var tokenHandler = new JwtSecurityTokenHandler();
-            
-                tokenHandler.ValidateToken(token,
-                    new TokenValidationParameters
-                    {
-                        ValidateIssuerSigningKey = true,
-                        ValidateIssuer = true,
-                        ValidateAudience = true,
-                        ValidIssuer = issuer,
-                        ValidAudience = audience,
-                        IssuerSigningKey = mySecurityKey,
-                    }, out var validatedToken);
-                
-                var jwtToken = (JwtSecurityToken)validatedToken;
-                
-                return jwtToken.Claims.First(x => x.Type == "id").Value;
+
+            tokenHandler.ValidateToken(token,
+                new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidIssuer = issuer,
+                    ValidAudience = audience,
+                    IssuerSigningKey = mySecurityKey,
+                }, out var validatedToken);
+
+            var jwtToken = (JwtSecurityToken) validatedToken;
+
+            return jwtToken.Claims.First(x => x.Type == "id").Value;
         }
     }
 }

@@ -3,9 +3,9 @@ using ProjectSharp.Authorisation.Models.Token.Exceptions;
 
 namespace ProjectSharp.Authorisation.Services.Foundation.TokenService
 {
-    public class TokenServiceValidations : TokenServiceExceptions
+    public static class TokenServiceValidations
     {
-        protected static void ValidateAudienceInput(string audience)
+        public static void ValidateAudienceInput(string audience)
         {
             if (string.IsNullOrWhiteSpace(audience))
             {
@@ -13,7 +13,7 @@ namespace ProjectSharp.Authorisation.Services.Foundation.TokenService
             }
         }
         
-        protected void ValidateApplicationUserModel(ApplicationUserModel applicationUserModel)
+        public static void ValidateApplicationUserModel(ApplicationUserModel applicationUserModel)
         {
             
         }

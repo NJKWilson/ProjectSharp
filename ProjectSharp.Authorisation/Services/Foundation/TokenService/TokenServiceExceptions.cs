@@ -2,11 +2,11 @@ using System;
 
 namespace ProjectSharp.Authorisation.Services.Foundation.TokenService
 {
-    public class TokenServiceExceptions
+    public static class TokenServiceExceptions
     {
-        protected delegate string ReturningTokenFunction();
+        public delegate string ReturningTokenFunction();
 
-        protected string TryCatch(ReturningTokenFunction returningTokenFunction)
+        public static string TryCatch(ReturningTokenFunction returningTokenFunction)
         {
             try
             {

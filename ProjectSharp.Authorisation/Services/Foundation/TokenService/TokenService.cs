@@ -1,11 +1,10 @@
 using System;
-using System.Runtime.CompilerServices;
 using ProjectSharp.Authorisation.Brokers.Token;
 using ProjectSharp.Authorisation.Models.ApplicationUser;
 
 namespace ProjectSharp.Authorisation.Services.Foundation.TokenService
 {
-    public class TokenService : TokenServiceBase, ITokenService
+    public class TokenService : ITokenService
     {
         private readonly ITokenBroker _tokenBroker;
         private const int ExpiryDurationMinutes = 30;
@@ -20,11 +19,11 @@ namespace ProjectSharp.Authorisation.Services.Foundation.TokenService
         }
 
         public string BuildToken(string audience, ApplicationUserModel applicationUserModel) =>
-            TryCatch(
+            TokenServiceExceptions.TryCatch(
                 () =>
                 {
-                    ValidateAudienceInput(audience);
-                    ValidateApplicationUserModel(applicationUserModel);
+                    TokenServiceValidations.ValidateAudienceInput(audience);
+                    TokenServiceValidations.ValidateApplicationUserModel(applicationUserModel);
 
                     return _tokenBroker.BuildToken(_issuer, audience, _jwtSigningKey, ExpiryDurationMinutes,
                         applicationUserModel);
