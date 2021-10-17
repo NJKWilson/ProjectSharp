@@ -4,13 +4,13 @@ namespace ProjectSharp.Authorisation.Services.Foundation.Tokens
 {
     public static class TokenServiceExceptions
     {
-        public delegate string ReturningTokenFunction();
+        public delegate string ReturnsStringFunction();
 
-        public static string TryCatch(ReturningTokenFunction returningTokenFunction)
+        public static string TryCatch(ReturnsStringFunction returningStringFunction)
         {
             try
             {
-                return returningTokenFunction();
+                return returningStringFunction();
             }
             catch (Exception nullAssignmentException)
             {

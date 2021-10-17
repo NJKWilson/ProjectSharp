@@ -23,17 +23,23 @@ namespace ProjectSharp.Authorisation.Services.Foundation.Tokens
                 () =>
                 {
                     TokenServiceValidations.ValidateAudienceInput(audience);
-                    TokenServiceValidations.ValidateApplicationUserModel(user);
+                    TokenServiceValidations.ValidateUserInput(user);
 
                     return _tokenBroker.BuildToken(_issuer, audience, _jwtSigningKey, ExpiryDurationMinutes,
                         user);
                 }
             );
 
-        public string VerifyToken(string audience, string token)
-        {
-            throw new NotImplementedException();
-        }
+        public string VerifyToken(string audience, string token) =>
+            TokenServiceExceptions.TryCatch(
+                () =>
+                {
+                    TokenServiceValidations.ValidateAudienceInput(audience);
+                    TokenServiceValidations.ValidateTokenInput(token);
+
+                    return _tokenBroker.ValidateToken(_issuer, audience, _jwtSigningKey, token);
+                }
+            );
 
         public void ChangeJwtSigningKey()
         {
