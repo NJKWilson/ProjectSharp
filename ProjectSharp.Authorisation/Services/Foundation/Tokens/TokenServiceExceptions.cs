@@ -12,7 +12,7 @@ namespace ProjectSharp.Authorisation.Services.Foundation.Tokens
             {
                 return returningStringFunction();
             }
-            catch (Exception nullAssignmentException)
+            catch (Exception)
             {
                 throw new Exception("nullAssignmentException");
             }

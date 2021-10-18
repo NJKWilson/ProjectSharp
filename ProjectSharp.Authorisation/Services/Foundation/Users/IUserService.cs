@@ -8,12 +8,12 @@ namespace ProjectSharp.Authorisation.Services.Foundation.Users
 {
     public interface IUserService
     {
-        ValueTask CreateIndexOnEmail(CancellationToken cancellationToken);
-        ValueTask CreateUserAsync(User user, CancellationToken cancellationToken);
-        ValueTask<IEnumerable<User>> GetAllUsersAsync(CancellationToken cancellationToken);
-        ValueTask<User> GetUserByIdAsync(ObjectId userId, CancellationToken cancellationToken);
-        ValueTask<User> GetUserByEmailAsync(string userEmail, CancellationToken cancellationToken);
-        ValueTask<User> UpdateUserAsync(User updatedUser, CancellationToken cancellationToken);
-        ValueTask<User> RemoveUserAsync(ObjectId userId, CancellationToken cancellationToken);
+        ValueTask CreateIndexOnEmail(CancellationToken cancellationToken = default);
+        ValueTask CreateUserAsync(User user, CancellationToken cancellationToken = default);
+        ValueTask<IEnumerable<User>> GetAllUsersAsync(CancellationToken cancellationToken = default);
+        ValueTask<User> GetUserByIdAsync(ObjectId userId, CancellationToken cancellationToken = default);
+        ValueTask<User> GetUserByEmailAsync(string userEmail, CancellationToken cancellationToken = default);
+        ValueTask<User> UpdateUserAsync(User updatedUser, CancellationToken cancellationToken = default);
+        ValueTask<User> RemoveUserAsync(ObjectId userId, CancellationToken cancellationToken = default);
     }
 }

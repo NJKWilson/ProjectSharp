@@ -5,12 +5,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="System.ServiceModel.Primitives" Version="4.7.0"/>
-        <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Folder Include="Authorisation"/>
+        <PackageReference Include="System.ServiceModel.Primitives" Version="4.7.0" />
+        <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
     </ItemGroup>
 
 </Project>

@@ -19,6 +19,12 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="EndPoints\GetAllUsers\Exceptions" />
+      <Folder Include="EndPoints\LockoutUser" />
+      <Folder Include="EndPoints\Login" />
+      <Folder Include="EndPoints\ResetPassword" />
+      <Folder Include="EndPoints\UpdateUserEmail" />
+      <Folder Include="EndPoints\VerifyToken" />
       <Folder Include="Models\Users\Exceptions" />
     </ItemGroup>
 

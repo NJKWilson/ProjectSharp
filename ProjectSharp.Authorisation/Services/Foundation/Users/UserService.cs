@@ -19,11 +19,11 @@ namespace ProjectSharp.Authorisation.Services.Foundation.Users
             _userStorageBroker = userStorageBroker;
         }
 
-        public ValueTask CreateIndexOnEmail(CancellationToken cancellationToken) =>
+        public ValueTask CreateIndexOnEmail(CancellationToken cancellationToken = default) =>
             UserServiceExceptions.TryCatch(async () =>
                 await _userStorageBroker.CreateIndexOnEmail(cancellationToken));
 
-        public ValueTask CreateUserAsync(User user, CancellationToken cancellationToken) =>
+        public ValueTask CreateUserAsync(User user, CancellationToken cancellationToken = default) =>
             UserServiceExceptions.TryCatch(
                 async () =>
                 {
@@ -33,11 +33,11 @@ namespace ProjectSharp.Authorisation.Services.Foundation.Users
                 }
             );
 
-        public ValueTask<IEnumerable<User>> GetAllUsersAsync(CancellationToken cancellationToken) =>
+        public ValueTask<IEnumerable<User>> GetAllUsersAsync(CancellationToken cancellationToken = default) =>
             UserServiceExceptions.TryCatch(async () =>
                 await _userStorageBroker.FindAllUsersAsync(cancellationToken));
 
-        public ValueTask<User> GetUserByIdAsync(ObjectId userId, CancellationToken cancellationToken) =>
+        public ValueTask<User> GetUserByIdAsync(ObjectId userId, CancellationToken cancellationToken = default) =>
             UserServiceExceptions.TryCatch(
                 async () =>
                 {
@@ -47,7 +47,7 @@ namespace ProjectSharp.Authorisation.Services.Foundation.Users
                 }
             );
 
-        public ValueTask<User> GetUserByEmailAsync(string userEmail, CancellationToken cancellationToken) =>
+        public ValueTask<User> GetUserByEmailAsync(string userEmail, CancellationToken cancellationToken = default) =>
             UserServiceExceptions.TryCatch(
                 async () =>
                 {
@@ -57,7 +57,7 @@ namespace ProjectSharp.Authorisation.Services.Foundation.Users
                 }
             );
 
-        public ValueTask<User> UpdateUserAsync(User updatedUser, CancellationToken cancellationToken) =>
+        public ValueTask<User> UpdateUserAsync(User updatedUser, CancellationToken cancellationToken = default) =>
             UserServiceExceptions.TryCatch(
                 async () =>
                 {
@@ -67,7 +67,7 @@ namespace ProjectSharp.Authorisation.Services.Foundation.Users
                 }
             );
 
-        public ValueTask<User> RemoveUserAsync(ObjectId userId, CancellationToken cancellationToken) =>
+        public ValueTask<User> RemoveUserAsync(ObjectId userId, CancellationToken cancellationToken = default) =>
             UserServiceExceptions.TryCatch(
                 async () =>
                 {
