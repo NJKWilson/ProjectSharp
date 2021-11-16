@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using ProjectSharp.Api.Endpoints.Authentication.Login;
 
 namespace ProjectSharp.Api.Endpoints.Authentication;
 
@@ -19,8 +20,9 @@ public class AuthenticationController : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
     [Produces("application/json")]
-    public ActionResult<string> Login()
+    public ActionResult<LoginResponse> Login()
     {
-        return Ok("ok");
+        var lr = new LoginResponse();
+        return BadRequest(lr);
     }
 }
