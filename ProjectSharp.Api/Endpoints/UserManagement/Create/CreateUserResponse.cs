@@ -1,4 +1,5 @@
 using ProjectSharp.DataAccess.Entities;
+// ReSharper disable MemberCanBePrivate.Global
 
 namespace ProjectSharp.Api.Endpoints.UserManagement.Create;
 

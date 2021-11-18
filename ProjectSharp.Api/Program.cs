@@ -33,3 +33,13 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+
+// todo Clean up project and remove all template files and comments
+// todo Implement brokers
+// todo add bcrypt nuget
+// todo implement auditable base entity
+// todo seed admin user in dbcontext
+// todo implement jwtStuff
+// todo decide if you want to do middleware
+// todo bearer token in headers or jwt in request body
