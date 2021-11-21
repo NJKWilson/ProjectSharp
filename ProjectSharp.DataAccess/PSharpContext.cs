@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ProjectSharp.DataAccess.Entities;
+using ProjectSharp.DataAccess.Enums;
 
 namespace ProjectSharp.DataAccess;
 
@@ -25,9 +26,7 @@ public class PSharpContext : DbContext
             .Property(p => p.Password).IsRequired();
         modelBuilder.Entity<User>()
             .Property(p => p.Role).IsRequired();
-        modelBuilder.Entity<User>()
-            .Property(p => p.CreatedOn).IsRequired();
-        
+
         modelBuilder
             .Entity<User>()
             .HasOne(e => e.CreatedBy)
@@ -38,5 +37,17 @@ public class PSharpContext : DbContext
             .Entity<User>()
             .HasOne(e => e.UpdatedBy)
             .WithMany();
+
+
+        var seedUser = new User
+        {
+            Email = "admin",
+            Password = "",
+            Role = UserRole.Admin.ToString(),
+            CreatedOn = DateTime.Now,
+        };
+        
+        modelBuilder.Entity<User>()
+            .HasData(new {Id = Guid.NewGuid() ,Email = "admin", Password = "", Role = UserRole.Admin.ToString(), CreatedOn = DateTime.Now});
     }
 }

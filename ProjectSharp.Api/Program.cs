@@ -38,5 +38,3 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
-
-// todo seed admin user in dbcontext

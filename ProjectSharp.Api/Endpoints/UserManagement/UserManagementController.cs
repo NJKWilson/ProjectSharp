@@ -5,6 +5,7 @@ using ProjectSharp.Api.Endpoints.UserManagement.Create.Exceptions;
 using ProjectSharp.Api.Endpoints.UserManagement.Delete;
 using ProjectSharp.Api.Endpoints.UserManagement.GetById;
 using ProjectSharp.Api.Endpoints.UserManagement.Update;
+using ProjectSharp.DataAccess.Entities;
 
 namespace ProjectSharp.Api.Endpoints.UserManagement;
 
@@ -32,9 +33,13 @@ public class UserManagementController : ControllerBase
     [Produces("application/json")]
     public async ValueTask<IActionResult> Create([FromBody] CreateUserRequest createUserRequest)
     {
+        var user = (User?)HttpContext.Items["User"];
+        if (user == null)
+            return Problem(title: "Unauthorized", statusCode: 401);
+
         try
         {
-            return Ok(await _createUserHandler.CreateUser(createUserRequest));
+            return Ok(await _createUserHandler.CreateUser(createUserRequest, user));
         }
         catch (CreateUserHandlerUserAlreadyExistsException e)
         {

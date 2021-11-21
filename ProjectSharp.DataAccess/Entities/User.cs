@@ -14,8 +14,8 @@ public class User : IAuditable
     public string? Password { get; set; }
     public string? Role { get; set; }
     
-    public DateTime CreatedOn { get; set; }
-    public DateTime? UpdatedOn { get; set; }
-    public virtual User CreatedBy { get; set; } = new User();
+    public DateTimeOffset CreatedOn { get; set; }
+    public DateTimeOffset? UpdatedOn { get; set; }
+    public virtual User? CreatedBy { get; set; }
     public virtual User? UpdatedBy { get; set; }
 }
