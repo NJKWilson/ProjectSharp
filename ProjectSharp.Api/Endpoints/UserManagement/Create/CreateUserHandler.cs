@@ -22,8 +22,7 @@ public class CreateUserHandler
         // Check if email is already used
         var maybeUser = await _pSharpContext.Users.FirstOrDefaultAsync(user => user.Email == createUserRequest.Email);
         if (maybeUser is not null)
-            throw new CreateUserHandlerUserAlreadyExistsException(
-                $"Email address '{createUserRequest.Email}' already registered.");
+            throw new CreateUserHandlerUserAlreadyExistsException(maybeUser);
         
         // todo hash password
         // Create the new User model

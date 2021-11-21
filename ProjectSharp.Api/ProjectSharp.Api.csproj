@@ -21,6 +21,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Brokers\DateTimeOffsetBroker" />
+      <Folder Include="Brokers\JwtTokenBroker" />
+      <Folder Include="Brokers\PasswordBroker" />
       <Folder Include="Endpoints\Authentication\Login\Exceptions" />
     </ItemGroup>
 
