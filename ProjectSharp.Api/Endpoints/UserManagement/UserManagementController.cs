@@ -40,7 +40,7 @@ public class UserManagementController : ControllerBase
         {
             return Problem(title:e.Message, statusCode:400);
         }
-        catch (Exception e)
+        catch (Exception)
         {
             return Problem(title:"Unhandled Exception", statusCode:500);
         }

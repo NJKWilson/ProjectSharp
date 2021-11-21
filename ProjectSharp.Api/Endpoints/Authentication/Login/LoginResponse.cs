@@ -9,6 +9,6 @@ public class LoginResponse
 
 public class InnerLoginResponse
 {
-    public string JwtKey { get; set; }
-    public string JwtRefreshKey { get; set; }
+    public string? JwtKey { get; set; }
+    public string? JwtRefreshKey { get; set; }
 }
