@@ -6,6 +6,7 @@ using ProjectSharp.Api.Endpoints.UserManagement.Delete;
 using ProjectSharp.Api.Endpoints.UserManagement.GetById;
 using ProjectSharp.Api.Endpoints.UserManagement.Update;
 using ProjectSharp.DataAccess.Entities;
+using ProjectSharp.DataAccess.Enums;
 
 namespace ProjectSharp.Api.Endpoints.UserManagement;
 
@@ -34,7 +35,10 @@ public class UserManagementController : ControllerBase
     public async ValueTask<IActionResult> Create([FromBody] CreateUserRequest createUserRequest)
     {
         var user = (User?)HttpContext.Items["User"];
-        if (user == null)
+        if (
+            user == null || 
+            user.Role != UserRole.Admin.ToString() ||
+            user.Role != UserRole.User.ToString())
             return Problem(title: "Unauthorized", statusCode: 401);
 
         try

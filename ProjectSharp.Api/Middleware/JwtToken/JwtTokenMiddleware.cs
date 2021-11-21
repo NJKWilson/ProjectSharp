@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using ProjectSharp.Api.Brokers.JwtToken;
-using ProjectSharp.Api.Endpoints.UserManagement.GetById;
 using ProjectSharp.DataAccess;
 
 namespace ProjectSharp.Api.Middleware.JwtToken;
