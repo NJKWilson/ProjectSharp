@@ -25,8 +25,8 @@ public class JwtTokenBroker : IJwtTokenBroker
             Subject = new ClaimsIdentity(new[]
             {
                 new Claim("id", user.Id.ToString()),
-                new Claim("email", user.Email),
-                new Claim("role", user.Role),
+                new Claim("email", user.Email ?? throw new InvalidOperationException()),
+                new Claim("role", user.Role ?? throw new InvalidOperationException()),
             }),
             Expires = _dateTimeBroker.TimeNow().DateTime.AddMinutes(expiryDurationMinutes),
             Issuer = issuer,
@@ -40,7 +40,7 @@ public class JwtTokenBroker : IJwtTokenBroker
         return tokenHandler.WriteToken(token);
     }
 
-    public string ValidateToken(string issuer, string audience, string jwtSigningKey, string token)
+    public Guid ValidateToken(string issuer, string audience, string jwtSigningKey, string token)
     {
         var mySecret = Encoding.UTF8.GetBytes(jwtSigningKey);
         var mySecurityKey = new SymmetricSecurityKey(mySecret);
@@ -59,6 +59,6 @@ public class JwtTokenBroker : IJwtTokenBroker
 
         var jwtToken = (JwtSecurityToken) validatedToken;
 
-        return jwtToken.Claims.First(x => x.Type == "id").Value;
+        return Guid.Parse(jwtToken.Claims.First(x => x.Type == "id").Value);
     }
 }

@@ -1,5 +1,8 @@
 using FluentValidation;
 using MediatR;
+using ProjectSharp.Api.Brokers.DateTime;
+using ProjectSharp.Api.Brokers.JwtToken;
+using ProjectSharp.Api.Brokers.Password;
 using ProjectSharp.Api.Endpoints.UserManagement.Create;
 using ProjectSharp.DataAccess;
 
@@ -13,6 +16,13 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddMediatR(typeof(Program));
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
+
+// Brokers
+builder.Services.AddTransient<IDateTimeBroker, DateTimeBroker>();
+builder.Services.AddTransient<IJwtTokenBroker, JwtTokenBroker>();
+builder.Services.AddTransient<IPasswordBroker, PasswordBroker>();
+
+// Handlers
 builder.Services.AddTransient<CreateUserHandler>();
 
 var app = builder.Build();
@@ -29,10 +39,4 @@ app.UseAuthorization();
 app.MapControllers();
 app.Run();
 
-// todo Implement brokers
-// todo add bcrypt nuget
-// todo implement auditable base entity
 // todo seed admin user in dbcontext
-// todo implement jwtStuff
-// todo decide if you want to do middleware
-// todo bearer token in headers or jwt in request body

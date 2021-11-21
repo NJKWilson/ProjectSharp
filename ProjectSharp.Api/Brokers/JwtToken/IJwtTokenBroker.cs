@@ -23,5 +23,5 @@ public interface IJwtTokenBroker
     /// <param name="jwtSigningKey"></param>
     /// <param name="token"></param>
     /// <returns></returns>
-    string ValidateToken(string issuer, string audience, string jwtSigningKey, string token);
+    Guid ValidateToken(string issuer, string audience, string jwtSigningKey, string token);
 }
