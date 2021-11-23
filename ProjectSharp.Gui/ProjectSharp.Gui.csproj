@@ -8,9 +8,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="Core\Entities" />
-        <Folder Include="Core\Middleware" />
-        <Folder Include="Features" />
+        <Folder Include="Features\Auth\Login" />
+        <Folder Include="Features\Auth\Logout" />
+        <Folder Include="Features\Users\GetAll\Exceptions" />
+        <Folder Include="Features\Users\GetById\Exceptions" />
+        <Folder Include="Features\Users\Update\Exceptions" />
     </ItemGroup>
 
     <ItemGroup>
