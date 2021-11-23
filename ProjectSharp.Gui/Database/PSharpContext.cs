@@ -1,11 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using ProjectSharp.Gui.Database.Entities;
+using ProjectSharp.Gui.Database.Entities.Users;
 using ProjectSharp.Gui.Database.Enums;
 
 namespace ProjectSharp.Gui.Database;
 
 public class PSharpContext : DbContext
 {
+    // ReSharper disable once UnusedAutoPropertyAccessor.Global
     public DbSet<User> Users { get; set; }
     
     private const string ConnectionString = "server=172.17.0.2;port=3306;database=ProjectSharp;user=root;password=example";

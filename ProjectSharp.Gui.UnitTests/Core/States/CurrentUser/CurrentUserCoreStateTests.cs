@@ -1,6 +1,7 @@
 using System;
 using ProjectSharp.Gui.Core.States.CurrentUser;
 using ProjectSharp.Gui.Database.Entities;
+using ProjectSharp.Gui.Database.Entities.Users;
 using ProjectSharp.Gui.Database.Enums;
 using Xunit;
 

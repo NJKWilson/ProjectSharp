@@ -1,5 +1,5 @@
-using ProjectSharp.DataAccess.Entities;
-using User = ProjectSharp.Gui.Database.Entities.User;
+using ProjectSharp.Gui.Database.Entities;
+using ProjectSharp.Gui.Database.Entities.Users;
 
 namespace ProjectSharp.Gui.Features.Users.Create;
 

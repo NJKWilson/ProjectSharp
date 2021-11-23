@@ -25,9 +25,5 @@
         </PackageReference>
         <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.0" />
     </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\ProjectSharp.DataAccess\ProjectSharp.DataAccess.csproj" />
-    </ItemGroup>
     
 </Project>

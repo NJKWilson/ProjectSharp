@@ -1,13 +1,11 @@
 using Microsoft.EntityFrameworkCore;
-using ProjectSharp.DataAccess;
-using ProjectSharp.DataAccess.Entities;
-using ProjectSharp.DataAccess.Enums;
 using ProjectSharp.Gui.Core.Brokers.DateTime;
 using ProjectSharp.Gui.Core.Brokers.Password;
+using ProjectSharp.Gui.Database;
+using ProjectSharp.Gui.Database.Entities;
+using ProjectSharp.Gui.Database.Entities.Users;
+using ProjectSharp.Gui.Database.Enums;
 using ProjectSharp.Gui.Features.Users.Create.Exceptions;
-using PSharpContext = ProjectSharp.Gui.Database.PSharpContext;
-using User = ProjectSharp.Gui.Database.Entities.User;
-using UserRole = ProjectSharp.Gui.Database.Enums.UserRole;
 
 namespace ProjectSharp.Gui.Features.Users.Create;
 

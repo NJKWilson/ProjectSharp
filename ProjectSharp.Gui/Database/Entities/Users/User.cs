@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace ProjectSharp.Gui.Database.Entities;
+namespace ProjectSharp.Gui.Database.Entities.Users;
 
 /// <summary>
 /// Use UserRole Enum to set role.
