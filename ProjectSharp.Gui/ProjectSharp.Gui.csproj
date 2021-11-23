@@ -12,8 +12,9 @@
         <Folder Include="Features\Auth\Login" />
         <Folder Include="Features\Auth\Logout" />
         <Folder Include="Features\Users\GetAll\Exceptions" />
-        <Folder Include="Features\Users\GetById\Exceptions" />
-        <Folder Include="Features\Users\Update\Exceptions" />
+        <Folder Include="Features\Users\UpdateEmail" />
+        <Folder Include="Features\Users\UpdatePassword" />
+        <Folder Include="Features\Users\UpdateRole" />
     </ItemGroup>
 
     <ItemGroup>
