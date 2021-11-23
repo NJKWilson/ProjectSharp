@@ -5,6 +5,9 @@ using ProjectSharp.DataAccess.Enums;
 using ProjectSharp.Gui.Core.Brokers.DateTime;
 using ProjectSharp.Gui.Core.Brokers.Password;
 using ProjectSharp.Gui.Features.Users.Create.Exceptions;
+using PSharpContext = ProjectSharp.Gui.Database.PSharpContext;
+using User = ProjectSharp.Gui.Database.Entities.User;
+using UserRole = ProjectSharp.Gui.Database.Enums.UserRole;
 
 namespace ProjectSharp.Gui.Features.Users.Create;
 

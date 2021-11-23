@@ -1,5 +1,7 @@
 using ProjectSharp.DataAccess.Entities;
 using ProjectSharp.DataAccess.Enums;
+using User = ProjectSharp.Gui.Database.Entities.User;
+using UserRole = ProjectSharp.Gui.Database.Enums.UserRole;
 
 namespace ProjectSharp.Gui.Core.States.CurrentUser;
 

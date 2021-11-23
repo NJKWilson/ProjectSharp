@@ -1,4 +1,5 @@
 using ProjectSharp.DataAccess.Entities;
+using User = ProjectSharp.Gui.Database.Entities.User;
 
 namespace ProjectSharp.Gui.Core.Brokers.Database.UserBroker;
 

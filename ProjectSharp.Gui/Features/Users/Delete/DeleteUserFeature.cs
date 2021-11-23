@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using ProjectSharp.DataAccess;
 using ProjectSharp.DataAccess.Entities;
 using ProjectSharp.Gui.Features.Users.Delete.Exceptions;
+using PSharpContext = ProjectSharp.Gui.Database.PSharpContext;
+using User = ProjectSharp.Gui.Database.Entities.User;
 
 namespace ProjectSharp.Gui.Features.Users.Delete;
 
