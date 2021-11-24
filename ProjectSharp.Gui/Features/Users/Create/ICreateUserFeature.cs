@@ -1,4 +1,3 @@
-using ProjectSharp.Gui.Database.Entities;
 using ProjectSharp.Gui.Database.Entities.Users;
 
 namespace ProjectSharp.Gui.Features.Users.Create;

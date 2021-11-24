@@ -1,7 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using ProjectSharp.Gui.Database.Entities;
 using ProjectSharp.Gui.Database.Entities.Users;
-using ProjectSharp.Gui.Database.Enums;
 
 namespace ProjectSharp.Gui.Database;
 
@@ -39,15 +37,6 @@ public class PSharpContext : DbContext
             .Entity<User>()
             .HasOne(e => e.UpdatedBy)
             .WithMany();
-
-
-        var seedUser = new User
-        {
-            Email = "admin",
-            Password = "",
-            Role = UserRole.Admin.ToString(),
-            CreatedOn = DateTime.Now,
-        };
         
         modelBuilder.Entity<User>()
             .HasData(new {Id = Guid.NewGuid() ,Email = "admin", Password = "", Role = UserRole.Admin.ToString(), CreatedOn = DateTimeOffset.Now});

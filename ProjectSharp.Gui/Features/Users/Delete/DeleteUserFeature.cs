@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using ProjectSharp.Gui.Database;
-using ProjectSharp.Gui.Database.Entities;
 using ProjectSharp.Gui.Database.Entities.Users;
 using ProjectSharp.Gui.Features.Users.Delete.Exceptions;
 

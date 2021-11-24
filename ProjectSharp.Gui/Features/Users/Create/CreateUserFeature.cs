@@ -3,7 +3,6 @@ using ProjectSharp.Gui.Core.Brokers.DateTime;
 using ProjectSharp.Gui.Core.Brokers.Password;
 using ProjectSharp.Gui.Database;
 using ProjectSharp.Gui.Database.Entities.Users;
-using ProjectSharp.Gui.Database.Enums;
 using ProjectSharp.Gui.Features.Users.Create.Exceptions;
 
 namespace ProjectSharp.Gui.Features.Users.Create;

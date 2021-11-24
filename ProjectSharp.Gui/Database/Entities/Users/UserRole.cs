@@ -1,4 +1,4 @@
-namespace ProjectSharp.Gui.Database.Enums;
+namespace ProjectSharp.Gui.Database.Entities.Users;
 
 public enum UserRole
 {
