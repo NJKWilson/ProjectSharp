@@ -13,7 +13,6 @@
 
     <ItemGroup>
         <Folder Include="Database\Configuration" />
-        <Folder Include="Features\Auth\Login" />
         <Folder Include="Features\Auth\Logout" />
         <Folder Include="Features\Users\GetAll\Exceptions" />
         <Folder Include="Features\Users\UpdateEmail" />

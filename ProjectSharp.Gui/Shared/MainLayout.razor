@@ -1,4 +1,8 @@
-﻿@inherits LayoutComponentBase
+﻿@using ProjectSharp.Gui.Core.States.CurrentUser
+@inherits LayoutComponentBase
+
+@inject CurrentUserCoreState _currentUserCoreState
+@inject NavigationManager _navigationManager
 
 <PageTitle>ProjectSharp.Gui</PageTitle>
 
@@ -25,3 +29,15 @@
         </main>
     </div>
 </div>
+
+@code
+{
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        if (!_currentUserCoreState.IsAuthenticated)
+        {
+            _navigationManager.NavigateTo("login");
+        }
+    }
+}

@@ -1,5 +1,6 @@
 using ProjectSharp.Gui.Core.States.CurrentUser;
 using ProjectSharp.Gui.Database;
+using ProjectSharp.Gui.Features.Auth.Login;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,8 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddDbContext<PSharpContext>();
 builder.Services.AddSingleton<CurrentUserCoreState>();
+builder.Services.AddSingleton<UsersState>();
+builder.Services.AddTransient<ILoginAuthFeature, LoginAuthFeature>();
 
 var app = builder.Build();
 
