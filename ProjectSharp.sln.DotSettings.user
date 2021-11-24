@@ -2,11 +2,9 @@
 	<s:String x:Key="/Default/CodeInspection/Highlighting/SweaWarningsMode/@EntryValue">ShowAndRun</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=35c68eab_002D0431_002D44e6_002D8006_002Dbcfc1da32f7c/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="AuthenticateUnitTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::44B2B67D-F269-4020-8407-A0ADFA2A1866::net5.0::ProjectSharp.Authorisation.Tests.Services.AuthorisationServiceTests.AuthorisationService_Throws_NotImplemented&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::44B2B67D-F269-4020-8407-A0ADFA2A1866::net5.0::ProjectSharp.Authorisation.Tests.Settings.ServiceSettingsTests.AuthorisationService_Throws_NotImplemented&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::44B2B67D-F269-4020-8407-A0ADFA2A1866::net5.0::ProjectSharp.Authorisation.Tests.Brokers.Password.PasswordBrokerTests.AuthorisationService_Throws_NotImplemented&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::44B2B67D-F269-4020-8407-A0ADFA2A1866::net5.0::ProjectSharp.Authorisation.Tests.Brokers.Password.PasswordBrokerTests.PasswordBroker_GeneratesAndVerifiesPassword_Pass&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::44B2B67D-F269-4020-8407-A0ADFA2A1866::net5.0::ProjectSharp.Authorisation.Tests.Brokers.Settings.SettingsBrokerTests.SettingsBroker_SavesAndLoadsSettings_Pass&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::BA8AE314-4C63-480C-9133-E83C5E5238BC::net6.0::ProjectSharp.Gui.UnitTests.Core.States.CurrentUser.CurrentUserCoreStateTests.LoginUser_CurrentUserIsNotNull&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::BA8AE314-4C63-480C-9133-E83C5E5238BC::net6.0::ProjectSharp.Gui.UnitTests.Core.States.CurrentUser.CurrentUserCoreStateTests.LoginUser_AdminUser_AdminCheckReturnTrue&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::BA8AE314-4C63-480C-9133-E83C5E5238BC::net6.0::ProjectSharp.Gui.UnitTests.Core.States.CurrentUser.CurrentUserCoreStateTests.LoginUser_UserUser_AdminCheckReturnFalse&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	</wpf:ResourceDictionary>
