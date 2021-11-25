@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using ProjectSharp.Gui.Core.Brokers.DateTime;
-using ProjectSharp.Gui.Core.Brokers.Password;
+using ProjectSharp.Gui.Brokers.DateTime;
+using ProjectSharp.Gui.Brokers.Password;
 using ProjectSharp.Gui.Database;
 using ProjectSharp.Gui.Database.Entities.Users;
 using ProjectSharp.Gui.Features.Users.Create.Exceptions;

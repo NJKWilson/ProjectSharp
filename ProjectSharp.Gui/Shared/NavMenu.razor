@@ -1,4 +1,9 @@
-﻿<div class="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
+﻿@using ProjectSharp.Gui.Features.Auth.Logout
+@using AuthenticationState = ProjectSharp.Gui.Features.Auth.AuthenticationState
+@inject ILogoutAuthFeature _logoutAuthFeature
+@inject AuthenticationState _authenticationState
+
+<div class="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
     <!-- Sidebar component, swap this element with another sidebar if you like -->
     <div class="flex-1 flex flex-col min-h-0 bg-gray-800">
         <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
@@ -54,9 +59,9 @@
                     </div>
                     <div class="ml-3">
                         <p class="text-sm font-medium text-white">
-                            Nathan Wilson
+                            @_authenticationState.CurrentUser?.Email
                         </p>
-                        <button class="text-xs font-medium text-gray-300 group-hover:text-gray-200">
+                        <button @onclick="_logoutAuthFeature.Logout" class="text-xs font-medium text-gray-300 group-hover:text-gray-200">
                             Logout
                         </button>
                     </div>

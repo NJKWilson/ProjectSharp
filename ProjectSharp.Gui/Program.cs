@@ -1,7 +1,9 @@
-using ProjectSharp.Gui.Core.Brokers.Password;
-using ProjectSharp.Gui.Core.States.CurrentUser;
+using ProjectSharp.Gui.Brokers.Password;
 using ProjectSharp.Gui.Database;
+using ProjectSharp.Gui.Features.Auth;
 using ProjectSharp.Gui.Features.Auth.Login;
+using ProjectSharp.Gui.Features.Auth.Logout;
+using ProjectSharp.Gui.Pages.UsersPage;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,9 +11,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddDbContext<PSharpContext>();
-builder.Services.AddSingleton<CurrentUserCoreState>();
-builder.Services.AddSingleton<UsersState>();
+builder.Services.AddSingleton<AuthenticationState>();
+builder.Services.AddSingleton<UsersPageState>();
 builder.Services.AddTransient<ILoginAuthFeature, LoginAuthFeature>();
+builder.Services.AddTransient<ILogoutAuthFeature, LogoutAuthFeature>();
 builder.Services.AddTransient<IPasswordBroker, PasswordBroker>();
 
 var app = builder.Build();

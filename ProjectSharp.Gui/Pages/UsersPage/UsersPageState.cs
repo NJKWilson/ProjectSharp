@@ -1,7 +1,7 @@
-namespace ProjectSharp.Gui.Core.States.CurrentUser;
+namespace ProjectSharp.Gui.Pages.UsersPage;
 
 // todo rename to UsersPageState
-public class UsersState
+public class UsersPageState
 {
     public bool EditUserFlyoutOpen { get; private set; } = false;
     public bool EditUserFlyoutHidden { get; private set; } = false;

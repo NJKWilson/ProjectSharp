@@ -1,10 +1,11 @@
 @page "/login"
 @using ProjectSharp.Gui.Features.Auth.Login
-@using ProjectSharp.Gui.Core.States.CurrentUser
+@using ProjectSharp.Gui.Features.Auth
+@using AuthenticationState = ProjectSharp.Gui.Features.Auth.AuthenticationState
 @layout LoginLayout
 
 @inject ILoginAuthFeature _loginAuthFeature;
-@inject CurrentUserCoreState _currentUserCoreState
+@inject AuthenticationState _authenticationState
 @inject NavigationManager _navigationManager
 
 <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -82,7 +83,7 @@
         
         await _loginAuthFeature.Login(_email, _password);
         
-        if (_currentUserCoreState.IsAuthenticated)
+        if (_authenticationState.IsAuthenticated)
         {
             _navigationManager.NavigateTo("");
         }

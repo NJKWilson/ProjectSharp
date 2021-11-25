@@ -1,4 +1,4 @@
-namespace ProjectSharp.Gui.Core.Brokers.DateTime;
+namespace ProjectSharp.Gui.Brokers.DateTime;
 
 public class DateTimeBroker : IDateTimeBroker
 {

@@ -1,6 +1,5 @@
 @page "/users"
-@using ProjectSharp.Gui.Core.States.CurrentUser
-@inject UsersState _usersState
+@inject UsersPageState _usersPageState
 
 
 <EditUser/>
@@ -75,7 +74,7 @@
 
     private async Task ToggleNavMenu()
     {
-        await _usersState.ToggleEditUserFlyout();
+        await _usersPageState.ToggleEditUserFlyout();
     }
 
 }

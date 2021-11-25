@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using ProjectSharp.Gui.Core.Brokers.Password;
-using ProjectSharp.Gui.Core.States.CurrentUser;
+using ProjectSharp.Gui.Brokers.Password;
 using ProjectSharp.Gui.Database;
 using ProjectSharp.Gui.Database.Entities.Users;
 using ProjectSharp.Gui.Features.Auth.Login.Exceptions;
@@ -12,18 +11,18 @@ public class LoginAuthFeature : ILoginAuthFeature
     private readonly ILogger<LoginAuthFeature> _logger;
     private readonly PSharpContext _pSharpContext;
     private readonly IPasswordBroker _passwordBroker;
-    private readonly CurrentUserCoreState _currentUserCoreState;
+    private readonly AuthenticationState _authenticationState;
 
     public LoginAuthFeature(
         ILogger<LoginAuthFeature> logger,
         PSharpContext pSharpContext,
         IPasswordBroker passwordBroker,
-        CurrentUserCoreState currentUserCoreState)
+        AuthenticationState authenticationState)
     {
         _logger = logger;
         _pSharpContext = pSharpContext;
         _passwordBroker = passwordBroker;
-        _currentUserCoreState = currentUserCoreState;
+        _authenticationState = authenticationState;
     }
 
     public async ValueTask<User> Login(string email, string password)
@@ -49,7 +48,7 @@ public class LoginAuthFeature : ILoginAuthFeature
         }
             
         // Set the current user
-        _currentUserCoreState.LoginUser(maybeUser);
+        _authenticationState.LoginUser(maybeUser);
         
         return maybeUser;
     }

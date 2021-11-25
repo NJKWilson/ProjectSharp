@@ -1,4 +1,4 @@
-namespace ProjectSharp.Gui.Core.Brokers.Password;
+namespace ProjectSharp.Gui.Brokers.Password;
 
 public class PasswordBroker : IPasswordBroker
 {

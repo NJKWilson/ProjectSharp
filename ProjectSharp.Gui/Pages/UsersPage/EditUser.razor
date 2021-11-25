@@ -1,5 +1,4 @@
-@using ProjectSharp.Gui.Core.States.CurrentUser
-@inject UsersState _usersState
+@inject UsersPageState _usersPageState
 @implements IDisposable
 
 <div class="@HiddenCss fixed inset-0 overflow-hidden z-10" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
@@ -39,22 +38,22 @@
 
 
 @code {
-    private string? HiddenCss => _usersState.EditUserFlyoutHidden ? null : "hidden";
-    private string? TransitionCss => _usersState.EditUserFlyoutOpen ? "ease-in-out duration-500 opacity-100" : "ease-in-out duration-500 opacity-0";
-    private string? TransformCss => _usersState.EditUserFlyoutOpen ? "transform transition ease-in-out duration-500 sm:duration-700 translate-x-0" : "transform transition ease-in-out duration-500 sm:duration-700 translate-x-full";
+    private string? HiddenCss => _usersPageState.EditUserFlyoutHidden ? null : "hidden";
+    private string? TransitionCss => _usersPageState.EditUserFlyoutOpen ? "ease-in-out duration-500 opacity-100" : "ease-in-out duration-500 opacity-0";
+    private string? TransformCss => _usersPageState.EditUserFlyoutOpen ? "transform transition ease-in-out duration-500 sm:duration-700 translate-x-0" : "transform transition ease-in-out duration-500 sm:duration-700 translate-x-full";
     
     private async Task ToggleNavMenu()
     {
-        await _usersState.ToggleEditUserFlyout();
+        await _usersPageState.ToggleEditUserFlyout();
     }
 
     protected override void OnInitialized()
     {
-        _usersState.OnChange += StateHasChanged;
+        _usersPageState.OnChange += StateHasChanged;
     }
 
     public void Dispose()
     {
-        _usersState.OnChange -= StateHasChanged;
+        _usersPageState.OnChange -= StateHasChanged;
     }
 }

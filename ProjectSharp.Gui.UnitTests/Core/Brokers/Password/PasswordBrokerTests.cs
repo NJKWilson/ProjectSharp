@@ -1,6 +1,5 @@
 using System;
-using ProjectSharp.Gui.Core.Brokers.Password;
-using ProjectSharp.Gui.Core.States.CurrentUser;
+using ProjectSharp.Gui.Brokers.Password;
 using Xunit;
 using Xunit.Abstractions;
 

@@ -1,7 +1,8 @@
-﻿@using ProjectSharp.Gui.Core.States.CurrentUser
+﻿@using ProjectSharp.Gui.Features.Auth
+@using AuthenticationState = ProjectSharp.Gui.Features.Auth.AuthenticationState
 @inherits LayoutComponentBase
 
-@inject CurrentUserCoreState _currentUserCoreState
+@inject AuthenticationState _authenticationState
 @inject NavigationManager _navigationManager
 
 <PageTitle>ProjectSharp.Gui</PageTitle>
@@ -35,7 +36,18 @@
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
-        if (!_currentUserCoreState.IsAuthenticated)
+        _authenticationState.OnChange += CheckAuth;
+        CheckAuth();
+    }
+
+    public void Dispose()
+    {
+        _authenticationState.OnChange -= CheckAuth;
+    }
+
+    private void CheckAuth()
+    {
+        if (!_authenticationState.IsAuthenticated)
         {
             _navigationManager.NavigateTo("login");
         }
