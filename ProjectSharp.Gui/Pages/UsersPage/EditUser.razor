@@ -38,10 +38,10 @@
 
 
 @code {
-    private string? HiddenCss => _usersPageState.EditUserFlyoutHidden ? null : "hidden";
-    private string? TransitionCss => _usersPageState.EditUserFlyoutOpen ? "ease-in-out duration-500 opacity-100" : "ease-in-out duration-500 opacity-0";
-    private string? TransformCss => _usersPageState.EditUserFlyoutOpen ? "transform transition ease-in-out duration-500 sm:duration-700 translate-x-0" : "transform transition ease-in-out duration-500 sm:duration-700 translate-x-full";
-    
+    private string HiddenCss => _usersPageState.EditUserFlyoutHidden ? string.Empty : "hidden";
+    private string TransitionCss => _usersPageState.EditUserFlyoutOpen ? "ease-in-out duration-500 opacity-100" : "ease-in-out duration-500 opacity-0";
+    private string TransformCss => _usersPageState.EditUserFlyoutOpen ? "transform transition ease-in-out duration-500 sm:duration-700 translate-x-0" : "transform transition ease-in-out duration-500 sm:duration-700 translate-x-full";
+
     private async Task ToggleNavMenu()
     {
         await _usersPageState.ToggleEditUserFlyout();
@@ -56,4 +56,5 @@
     {
         _usersPageState.OnChange -= StateHasChanged;
     }
+
 }

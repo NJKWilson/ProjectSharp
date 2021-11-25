@@ -8,6 +8,7 @@ public class LogoutAuthFeature : ILogoutAuthFeature
     {
         _authenticationState = authenticationState;
     }
+
     public void Logout()
     {
         _authenticationState.LogoutUser();

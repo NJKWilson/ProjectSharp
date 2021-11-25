@@ -3,10 +3,10 @@ namespace ProjectSharp.Gui.Pages.UsersPage;
 // todo rename to UsersPageState
 public class UsersPageState
 {
-    public bool EditUserFlyoutOpen { get; private set; } = false;
-    public bool EditUserFlyoutHidden { get; private set; } = false;
+    public bool EditUserFlyoutOpen { get; private set; }
+    public bool EditUserFlyoutHidden { get; private set; }
     public event Action? OnChange;
-    
+
     // EditUserFlyout
     public async Task ToggleEditUserFlyout()
     {
@@ -29,6 +29,9 @@ public class UsersPageState
             NotifyStateChanged();
         }
     }
-    
-    private void NotifyStateChanged() => OnChange?.Invoke();
+
+    private void NotifyStateChanged()
+    {
+        OnChange?.Invoke();
+    }
 }

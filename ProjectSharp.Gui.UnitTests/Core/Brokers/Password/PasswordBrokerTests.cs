@@ -1,4 +1,3 @@
-using System;
 using ProjectSharp.Gui.Brokers.Password;
 using Xunit;
 using Xunit.Abstractions;

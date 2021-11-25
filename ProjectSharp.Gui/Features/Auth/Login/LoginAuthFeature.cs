@@ -8,10 +8,10 @@ namespace ProjectSharp.Gui.Features.Auth.Login;
 
 public class LoginAuthFeature : ILoginAuthFeature
 {
-    private readonly ILogger<LoginAuthFeature> _logger;
-    private readonly PSharpContext _pSharpContext;
-    private readonly IPasswordBroker _passwordBroker;
     private readonly AuthenticationState _authenticationState;
+    private readonly ILogger<LoginAuthFeature> _logger;
+    private readonly IPasswordBroker _passwordBroker;
+    private readonly PSharpContext _pSharpContext;
 
     public LoginAuthFeature(
         ILogger<LoginAuthFeature> logger,
@@ -30,7 +30,7 @@ public class LoginAuthFeature : ILoginAuthFeature
         // Validation
         if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
             throw new LoginAuthFeatureBadRequest("Username or Password can not be empty.");
-        
+
         // Check user does exist.
         var maybeUser = await _pSharpContext.Users.FirstOrDefaultAsync(
             u => u.Email == email);
@@ -46,10 +46,10 @@ public class LoginAuthFeature : ILoginAuthFeature
         {
             throw new LoginAuthFeatureDependencyException("Password hashing Exception", exception);
         }
-            
+
         // Set the current user
         _authenticationState.LoginUser(maybeUser);
-        
+
         return maybeUser;
     }
 }

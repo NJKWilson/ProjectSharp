@@ -13,7 +13,7 @@ public class DeleteUserFeature : IDeleteUserFeature
     {
         _pSharpContext = pSharpContext;
     }
-    
+
     public async ValueTask<User> DeleteAsync(User user)
     {
         // Validation
@@ -25,7 +25,7 @@ public class DeleteUserFeature : IDeleteUserFeature
             u => u.Id == user.Id);
         if (maybeUser is null)
             throw new DeleteUserFeatureUserDoesNotExistException();
-        
+
         // Try to save to database
         try
         {
