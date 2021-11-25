@@ -13,6 +13,18 @@ public class AuthenticationState
     public bool IsLocked => CurrentUser != null && CurrentUser.Role == UserRole.Locked.ToString();
     public event Action? OnChange;
 
+
+    public AuthenticationState()
+    {
+        // todo this needs to be removed
+        var user = new User
+        {
+            Role = "Admin"
+        };
+
+        CurrentUser = user;
+    }
+    
     public void LoginUser(User userToLogIn)
     {
         CurrentUser = userToLogIn;
