@@ -4,9 +4,7 @@ public class PasswordBroker : IPasswordBroker
 {
     public string HashPassword(string password)
     {
-        var salt = BCrypt.Net.BCrypt.GenerateSalt();
-
-        return BCrypt.Net.BCrypt.HashPassword(password, salt);
+        return BCrypt.Net.BCrypt.HashPassword(password);
     }
 
     public bool VerifyPassword(string password, string passwordHash)

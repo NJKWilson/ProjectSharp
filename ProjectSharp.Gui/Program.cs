@@ -1,3 +1,4 @@
+using ProjectSharp.Gui.Core.Brokers.Password;
 using ProjectSharp.Gui.Core.States.CurrentUser;
 using ProjectSharp.Gui.Database;
 using ProjectSharp.Gui.Features.Auth.Login;
@@ -11,6 +12,7 @@ builder.Services.AddDbContext<PSharpContext>();
 builder.Services.AddSingleton<CurrentUserCoreState>();
 builder.Services.AddSingleton<UsersState>();
 builder.Services.AddTransient<ILoginAuthFeature, LoginAuthFeature>();
+builder.Services.AddTransient<IPasswordBroker, PasswordBroker>();
 
 var app = builder.Build();
 

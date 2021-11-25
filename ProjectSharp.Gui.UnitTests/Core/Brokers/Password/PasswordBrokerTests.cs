@@ -23,8 +23,10 @@ public class PasswordBrokerTests
         IPasswordBroker passwordBroker = new PasswordBroker();
         // When 
         var passwordHash = passwordBroker.HashPassword("admin");
-        
-        // Should
         _testOutputHelper.WriteLine(passwordHash);
+            
+        // Should
+        Assert.True(passwordBroker.VerifyPassword("admin",passwordHash));
+        Assert.True(passwordBroker.VerifyPassword("admin","$2a$11$Gwm.VIP9e7UGKD8D.awmlu2oxgnNHQaRfbuVT9PVpEwrc1uuBFok."));
     }
 }

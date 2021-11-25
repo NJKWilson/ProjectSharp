@@ -4,5 +4,5 @@ namespace ProjectSharp.Gui.Features.Auth.Login;
 
 public interface ILoginAuthFeature
 {
-    ValueTask<User> Login(string username, string password);
+    ValueTask<User> Login(string email, string password);
 }
