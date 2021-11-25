@@ -5,6 +5,7 @@
     &lt;TestId&gt;xUnit::BA8AE314-4C63-480C-9133-E83C5E5238BC::net6.0::ProjectSharp.Gui.UnitTests.Core.States.CurrentUser.CurrentUserCoreStateTests.LoginUser_CurrentUserIsNotNull&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::BA8AE314-4C63-480C-9133-E83C5E5238BC::net6.0::ProjectSharp.Gui.UnitTests.Core.States.CurrentUser.CurrentUserCoreStateTests.LoginUser_AdminUser_AdminCheckReturnTrue&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::BA8AE314-4C63-480C-9133-E83C5E5238BC::net6.0::ProjectSharp.Gui.UnitTests.Core.States.CurrentUser.CurrentUserCoreStateTests.LoginUser_UserUser_AdminCheckReturnFalse&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::BA8AE314-4C63-480C-9133-E83C5E5238BC::net6.0::ProjectSharp.Gui.UnitTests.Core.Brokers.Password.PasswordBrokerTests.Init_CurrentUserShouldBeNull&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	</wpf:ResourceDictionary>

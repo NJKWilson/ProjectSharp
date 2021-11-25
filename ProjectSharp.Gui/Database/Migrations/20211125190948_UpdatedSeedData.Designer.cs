@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjectSharp.Gui.Database;
 
@@ -10,9 +11,10 @@ using ProjectSharp.Gui.Database;
 namespace ProjectSharp.DataAccess.Migrations
 {
     [DbContext(typeof(PSharpContext))]
-    partial class PSharpContextModelSnapshot : ModelSnapshot
+    [Migration("20211125190948_UpdatedSeedData")]
+    partial class UpdatedSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

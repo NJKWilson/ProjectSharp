@@ -39,6 +39,6 @@ public class PSharpContext : DbContext
             .WithMany();
         
         modelBuilder.Entity<User>()
-            .HasData(new {Id = Guid.NewGuid() ,Email = "admin", Password = "", Role = UserRole.Admin.ToString(), CreatedOn = DateTimeOffset.Now});
+            .HasData(new {Id = Guid.NewGuid() ,Email = "admin", Password = "$2a$11$wavn.EqSjRjLzfaE9jsN6uRLgU51Uu6o39kZUOQld11HwF9En7imy", Role = UserRole.Admin.ToString(), CreatedOn = DateTimeOffset.Now});
     }
 }

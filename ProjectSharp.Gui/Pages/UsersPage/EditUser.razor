@@ -2,33 +2,11 @@
 @inject UsersState _usersState
 @implements IDisposable
 
-<!-- This example requires Tailwind CSS v2.0+ -->
-<div class="@NavMenuCssClass fixed inset-0 overflow-hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+<div class="@HiddenCss fixed inset-0 overflow-hidden z-10" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
     <div class="absolute inset-0 overflow-hidden">
-        <!--
-        Background overlay, show/hide based on slide-over state.
-
-        Entering: "ease-in-out duration-500"
-        From: "opacity-0"
-        To: "opacity-100"
-        Leaving: "ease-in-out duration-500"
-        From: "opacity-100"
-        To: "opacity-0"
-        -->
-        <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
-
+        <div class="@TransitionCss absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
         <div class="fixed inset-y-0 right-0 pl-10 max-w-full flex">
-            <!--
-            Slide-over panel, show/hide based on slide-over state.
-
-            Entering: "transform transition ease-in-out duration-500 sm:duration-700"
-            From: "translate-x-full"
-            To: "translate-x-0"
-            Leaving: "transform transition ease-in-out duration-500 sm:duration-700"
-            From: "translate-x-0"
-            To: "translate-x-full"
-            -->
-            <div class="w-screen max-w-md">
+            <div class="@TransformCss w-screen max-w-md">
                 <div class="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
                     <div class="px-4 sm:px-6">
                         <div class="flex items-start justify-between">
@@ -38,7 +16,7 @@
                             <div class="ml-3 h-7 flex items-center">
                                 <button type="button" @onclick="ToggleNavMenu" class="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                     <span class="sr-only">Close panel</span>
-                                    <!-- Heroicon name: outline/x -->
+                                    <!-- HeroIcon name: outline/x -->
                                     <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                                     </svg>
@@ -61,13 +39,13 @@
 
 
 @code {
-
-    //private string? NavMenuCssClass => _usersState.EditUserFlyoutOpen ? "hidden" : null;
-    private string? NavMenuCssClass => _usersState.EditUserFlyoutOpen ? null : "hidden";
+    private string? HiddenCss => _usersState.EditUserFlyoutHidden ? null : "hidden";
+    private string? TransitionCss => _usersState.EditUserFlyoutOpen ? "ease-in-out duration-500 opacity-100" : "ease-in-out duration-500 opacity-0";
+    private string? TransformCss => _usersState.EditUserFlyoutOpen ? "transform transition ease-in-out duration-500 sm:duration-700 translate-x-0" : "transform transition ease-in-out duration-500 sm:duration-700 translate-x-full";
     
-    private void ToggleNavMenu()
+    private async Task ToggleNavMenu()
     {
-        _usersState.ToggleEditUserFlyout();
+        await _usersState.ToggleEditUserFlyout();
     }
 
     protected override void OnInitialized()
@@ -79,5 +57,4 @@
     {
         _usersState.OnChange -= StateHasChanged;
     }
-
 }

@@ -2,8 +2,10 @@ using ProjectSharp.Gui.Database.Entities.Users;
 
 namespace ProjectSharp.Gui.Core.States.CurrentUser;
 
+// todo rename to AuthenticationState or AuthState
 public class CurrentUserCoreState
 {
+    // todo needs to get the user from the database everytime its requested
     public User? CurrentUser { get; private set; }
     public bool IsAuthenticated => CurrentUser != null;
     public bool IsAdmin => CurrentUser != null && (CurrentUser.Role == UserRole.Admin.ToString());
