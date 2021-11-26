@@ -25,8 +25,40 @@
                     </div>
                     <div class="mt-6 relative flex-1 px-4 sm:px-6">
                         <!-- Replace with your content -->
-                        <div class="absolute inset-0 px-4 sm:px-6">
-                            <div class="h-full border-2 border-dashed border-gray-200" aria-hidden="true"></div>
+                        <div>
+                            <div class="absolute inset-0 px-4 sm:px-6">
+                                <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                                    <div class="sm:col-span-3">
+                                        <div class="relative border border-gray-300 px-3 py-2 shadow-sm focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600">
+                                            <label for="name" class="absolute -top-2 left-2 -mt-px inline-block px-1 bg-white text-xs font-medium text-gray-900">First Name</label>
+                                            <input type="text" name="name" id="name" class="block appearance-none w-full border-0 p-0 text-gray-900 placeholder-gray-500 sm:text-sm" placeholder="Jane">
+                                        </div>
+                                    </div>
+                                    <div class="sm:col-span-3">
+                                        <div class="relative border border-gray-300 px-3 py-2 shadow-sm focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600">
+                                            <label for="name" class="absolute -top-2 left-2 -mt-px inline-block px-1 bg-white text-xs font-medium text-gray-900">Last Name</label>
+                                            <input type="text" name="name" id="name" class="block appearance-none w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="Doe">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="relative border border-gray-300 px-3 py-2 mt-4 shadow-sm focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600">
+                                    <label for="name" class="absolute -top-2 left-2 -mt-px inline-block px-1 bg-white text-xs font-medium text-gray-900">Email</label>
+                                    <input type="text" name="name" id="name" class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="xyz@psharp.com">
+                                </div>
+                                <div class="relative border border-gray-300 px-3 py-2 mt-4 shadow-sm focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600">
+                                    <label for="name" class="absolute -top-2 left-2 -mt-px inline-block px-1 bg-white text-xs font-medium text-gray-900">Position</label>
+                                    <input type="text" name="name" id="name" class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="Professional Slacker">
+                                </div>
+                                <div class="mt-4">
+                                    <label for="location" class="block text-sm font-medium text-gray-700">Role</label>
+                                    <select id="location" name="location" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                        <option>Admin</option>
+                                        <option selected>User</option>
+                                        <option>Locked</option>
+                                    </select>
+                                </div>
+
+                            </div>
                         </div>
                         <!-- /End replace -->
                     </div>

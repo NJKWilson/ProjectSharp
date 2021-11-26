@@ -49,3 +49,5 @@ app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 
 app.Run();
+
+// todo database speed tests login takes ages
