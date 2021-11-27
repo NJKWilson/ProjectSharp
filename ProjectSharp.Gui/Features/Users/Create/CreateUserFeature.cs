@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+using MongoDB.Driver;
 using ProjectSharp.Gui.Brokers.DateTime;
 using ProjectSharp.Gui.Brokers.Password;
 using ProjectSharp.Gui.Database;
@@ -9,14 +9,14 @@ namespace ProjectSharp.Gui.Features.Users.Create;
 
 public class CreateUserFeature : ICreateUserFeature
 {
+    private readonly IMongoDbContext _mongoDbContext;
     private readonly IDateTimeBroker _dateTimeBroker;
     private readonly IPasswordBroker _passwordBroker;
-    private readonly PSharpContext _pSharpContext;
 
     public CreateUserFeature(
-        PSharpContext pSharpContext, IDateTimeBroker dateTimeBroker, IPasswordBroker passwordBroker)
+        IMongoDbContext mongoDbContext, IDateTimeBroker dateTimeBroker, IPasswordBroker passwordBroker)
     {
-        _pSharpContext = pSharpContext;
+        _mongoDbContext = mongoDbContext;
         _dateTimeBroker = dateTimeBroker;
         _passwordBroker = passwordBroker;
     }
@@ -24,13 +24,14 @@ public class CreateUserFeature : ICreateUserFeature
     public async ValueTask<User> InsertAsync(string email, string password, User creatingUser)
     {
         // Validation
-        if (string.IsNullOrWhiteSpace(email)
-            || string.IsNullOrWhiteSpace(password))
+        if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
             throw new CreateUserFeatureBadRequestException("Username or Password cannot be empty.");
 
         // Check user does not exist.
-        var maybeUser = await _pSharpContext.Users.FirstOrDefaultAsync(
-            u => u.Email == email);
+        var searchFilter = Builders<User>.Filter.Where(u => u.Email == email);
+
+        var maybeUser = await _mongoDbContext.Users.Find(searchFilter).FirstOrDefaultAsync();
+        
         if (maybeUser is not null)
             throw new CreateUserFeatureUserAlreadyExistsException(maybeUser);
 
@@ -47,12 +48,11 @@ public class CreateUserFeature : ICreateUserFeature
         // Try to save to database
         try
         {
-            await _pSharpContext.Users.AddAsync(newUser);
-            await _pSharpContext.SaveChangesAsync();
+            await _mongoDbContext.Users.InsertOneAsync(newUser);
         }
         catch (Exception exception)
         {
-            throw new CreateUserFeatureDatabaseException("Database Exception", exception);
+            throw new CreateUserFeatureDatabaseException("Database exception while trying to insert User", exception);
         }
 
         return newUser;

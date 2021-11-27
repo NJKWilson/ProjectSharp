@@ -1,6 +1,8 @@
+using Microsoft.Extensions.Options;
 using ProjectSharp.Gui.Brokers.DateTime;
 using ProjectSharp.Gui.Brokers.Password;
 using ProjectSharp.Gui.Database;
+using ProjectSharp.Gui.Database.Configuration;
 using ProjectSharp.Gui.Features.Auth;
 using ProjectSharp.Gui.Features.Auth.Login;
 using ProjectSharp.Gui.Features.Auth.Logout;
@@ -13,7 +15,13 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
 // Db
-builder.Services.AddDbContext<PSharpContext>();
+builder.Services.Configure<MongoDbContext>(
+    builder.Configuration.GetSection(nameof(MongoDbSettings)));
+
+builder.Services.AddSingleton<IMongoDbSettings>(sp =>
+    sp.GetRequiredService<IOptions<MongoDbSettings>>().Value);
+
+builder.Services.AddSingleton<IMongoDbContext, MongoDbContext>();
 
 // States
 builder.Services.AddSingleton<AuthenticationState>();

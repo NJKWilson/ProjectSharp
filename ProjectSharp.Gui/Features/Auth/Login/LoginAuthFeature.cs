@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+using MongoDB.Driver;
 using ProjectSharp.Gui.Brokers.Password;
 using ProjectSharp.Gui.Database;
 using ProjectSharp.Gui.Database.Entities.Users;
@@ -10,17 +10,17 @@ public class LoginAuthFeature : ILoginAuthFeature
 {
     private readonly AuthenticationState _authenticationState;
     private readonly ILogger<LoginAuthFeature> _logger;
+    private readonly IMongoDbContext _mongoDbContext;
     private readonly IPasswordBroker _passwordBroker;
-    private readonly PSharpContext _pSharpContext;
 
     public LoginAuthFeature(
         ILogger<LoginAuthFeature> logger,
-        PSharpContext pSharpContext,
+        IMongoDbContext mongoDbContext,
         IPasswordBroker passwordBroker,
         AuthenticationState authenticationState)
     {
         _logger = logger;
-        _pSharpContext = pSharpContext;
+        _mongoDbContext = mongoDbContext;
         _passwordBroker = passwordBroker;
         _authenticationState = authenticationState;
     }
@@ -32,14 +32,26 @@ public class LoginAuthFeature : ILoginAuthFeature
             throw new LoginAuthFeatureBadRequest("Username or Password can not be empty.");
 
         // Check user does exist.
-        var maybeUser = await _pSharpContext.Users.FirstOrDefaultAsync(
-            u => u.Email == email);
+        var searchFilter = Builders<User>.Filter.Where(e => e.Email == email);
+
+        User maybeUser;
+        
+        try
+        {
+            maybeUser = await _mongoDbContext.Users.Find(searchFilter).FirstOrDefaultAsync();
+        }
+        catch (Exception exception)
+        {
+            throw new LoginAuthFeatureDatabaseException("Database exception while trying to retrieve User", exception);
+        }
+        
         if (maybeUser is null)
             throw new LoginAuthFeatureBadRequest("Username or Password is incorrect.");
+        
         // Check password
         try
         {
-            if (!_passwordBroker.VerifyPassword(password, maybeUser.Password))
+            if (maybeUser.Password != null && !_passwordBroker.VerifyPassword(password, maybeUser.Password))
                 throw new LoginAuthFeatureBadRequest("Username or Password is incorrect.");
         }
         catch (Exception exception)
