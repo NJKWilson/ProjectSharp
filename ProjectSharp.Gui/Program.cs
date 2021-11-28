@@ -15,12 +15,10 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
 // Db
-builder.Services.Configure<MongoDbContext>(
-    builder.Configuration.GetSection(nameof(MongoDbSettings)));
+var mongoDbSettings = new MongoDbSettings();
+builder.Configuration.GetSection(nameof(MongoDbSettings)).Bind(mongoDbSettings);
 
-builder.Services.AddSingleton<IMongoDbSettings>(sp =>
-    sp.GetRequiredService<IOptions<MongoDbSettings>>().Value);
-
+builder.Services.AddSingleton<IMongoDbSettings>(mongoDbSettings);
 builder.Services.AddSingleton<IMongoDbContext, MongoDbContext>();
 
 // States
