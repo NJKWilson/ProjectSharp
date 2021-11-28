@@ -1,6 +1,6 @@
 using System;
-using ProjectSharp.Gui.Core.States.CurrentUser;
 using ProjectSharp.Gui.Database.Entities.Users;
+using ProjectSharp.Gui.Features.Auth;
 using Xunit;
 
 namespace ProjectSharp.Gui.UnitTests.Core.States.CurrentUser;
@@ -12,12 +12,12 @@ public class CurrentUserCoreStateTests
     {
         // Given
         // ReSharper disable once JoinDeclarationAndInitializer
-        CurrentUserCoreState currentUserCoreState;
+        AuthenticationState authenticationState;
         // When 
-        currentUserCoreState = new CurrentUserCoreState();
+        authenticationState = new AuthenticationState();
         
         // Should
-        Assert.Null(currentUserCoreState.CurrentUser);
+        Assert.Null(authenticationState.CurrentUser);
     }
     
     [Fact]
@@ -25,15 +25,15 @@ public class CurrentUserCoreStateTests
     {
         // Given
         // ReSharper disable once JoinDeclarationAndInitializer
-        CurrentUserCoreState currentUserCoreState;
+        AuthenticationState authenticationState;
         // When 
-        currentUserCoreState = new CurrentUserCoreState();
+        authenticationState = new AuthenticationState();
         
         // Should
-        Assert.False(currentUserCoreState.IsAuthenticated);
-        Assert.False(currentUserCoreState.IsAdmin);
-        Assert.False(currentUserCoreState.IsUser);
-        Assert.False(currentUserCoreState.IsLocked);
+        Assert.False(authenticationState.IsAuthenticated);
+        Assert.False(authenticationState.IsAdmin);
+        Assert.False(authenticationState.IsUser);
+        Assert.False(authenticationState.IsLocked);
     }
     
     [Fact]
@@ -41,7 +41,7 @@ public class CurrentUserCoreStateTests
     {
         // Given
         // ReSharper disable once JoinDeclarationAndInitializer
-        var currentUserCoreState = new CurrentUserCoreState();
+        var currentUserCoreState = new AuthenticationState();
         var user = new User
         {
             Id = Guid.NewGuid(),
@@ -62,7 +62,7 @@ public class CurrentUserCoreStateTests
     {
         // Given
         // ReSharper disable once JoinDeclarationAndInitializer
-        var currentUserCoreState = new CurrentUserCoreState();
+        var currentUserCoreState = new AuthenticationState();
         var user = new User
         {
             Id = Guid.NewGuid(),
@@ -83,7 +83,7 @@ public class CurrentUserCoreStateTests
     {
         // Given
         // ReSharper disable once JoinDeclarationAndInitializer
-        var currentUserCoreState = new CurrentUserCoreState();
+        var currentUserCoreState = new AuthenticationState();
         var user = new User
         {
             Id = Guid.NewGuid(),

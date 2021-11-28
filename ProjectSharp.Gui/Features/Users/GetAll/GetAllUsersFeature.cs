@@ -1,3 +1,4 @@
+using MongoDB.Driver;
 using ProjectSharp.Gui.Database;
 using ProjectSharp.Gui.Database.Entities.Users;
 
@@ -5,15 +6,16 @@ namespace ProjectSharp.Gui.Features.Users.GetAll;
 
 public class GetAllUsersFeature : IGetAllUsersFeature
 {
-    private readonly PSharpContext _pSharpContext;
+    private readonly IMongoDbContext _mongoDbContext;
 
-    public GetAllUsersFeature(PSharpContext pSharpContext)
+    public GetAllUsersFeature(IMongoDbContext mongoDbContext)
     {
-        _pSharpContext = pSharpContext;
+        _mongoDbContext = mongoDbContext;
     }
 
-    public IQueryable<User> SelectAll()
+    public async ValueTask<IEnumerable<User>> GetAll()
     {
-        return _pSharpContext.Users.AsQueryable();
+        var searchFilter = Builders<User>.Filter.Empty;
+        return await _mongoDbContext.Users.Find(searchFilter).ToListAsync();
     }
 }

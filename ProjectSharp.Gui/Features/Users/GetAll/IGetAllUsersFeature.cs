@@ -4,5 +4,5 @@ namespace ProjectSharp.Gui.Features.Users.GetAll;
 
 public interface IGetAllUsersFeature
 {
-    IQueryable<User> SelectAll();
+    ValueTask<IEnumerable<User>> GetAll();
 }

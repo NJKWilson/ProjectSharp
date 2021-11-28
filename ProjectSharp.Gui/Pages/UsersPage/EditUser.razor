@@ -1,0 +1,92 @@
+@inject UsersPageState _usersPageState
+@implements IDisposable
+
+<div class="@HiddenCss fixed inset-0 overflow-hidden z-10" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+    <div class="absolute inset-0 overflow-hidden">
+        <div class="@TransitionCss absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+        <div class="fixed inset-y-0 right-0 pl-10 max-w-full flex">
+            <div class="@TransformCss w-screen max-w-md">
+                <div class="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
+                    <div class="px-4 sm:px-6">
+                        <div class="flex items-start justify-between">
+                            <h2 class="text-lg font-medium text-gray-900" id="slide-over-title">
+                                Panel title
+                            </h2>
+                            <div class="ml-3 h-7 flex items-center">
+                                <button type="button" @onclick="ToggleNavMenu" class="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    <span class="sr-only">Close panel</span>
+                                    <!-- HeroIcon name: outline/x -->
+                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6 relative flex-1 px-4 sm:px-6">
+                        <!-- Replace with your content -->
+                        <div>
+                            <div class="absolute inset-0 px-4 sm:px-6">
+                                <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                                    <div class="sm:col-span-3">
+                                        <div class="relative border border-gray-300 px-3 py-2 shadow-sm focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600">
+                                            <label for="name" class="absolute -top-2 left-2 -mt-px inline-block px-1 bg-white text-xs font-medium text-gray-900">First Name</label>
+                                            <input type="text" name="name" id="name" class="block appearance-none w-full border-0 p-0 text-gray-900 placeholder-gray-500 sm:text-sm" placeholder="Jane">
+                                        </div>
+                                    </div>
+                                    <div class="sm:col-span-3">
+                                        <div class="relative border border-gray-300 px-3 py-2 shadow-sm focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600">
+                                            <label for="name" class="absolute -top-2 left-2 -mt-px inline-block px-1 bg-white text-xs font-medium text-gray-900">Last Name</label>
+                                            <input type="text" name="name" id="name" class="block appearance-none w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="Doe">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="relative border border-gray-300 px-3 py-2 mt-4 shadow-sm focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600">
+                                    <label for="name" class="absolute -top-2 left-2 -mt-px inline-block px-1 bg-white text-xs font-medium text-gray-900">Email</label>
+                                    <input type="text" name="name" id="name" class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="xyz@psharp.com">
+                                </div>
+                                <div class="relative border border-gray-300 px-3 py-2 mt-4 shadow-sm focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600">
+                                    <label for="name" class="absolute -top-2 left-2 -mt-px inline-block px-1 bg-white text-xs font-medium text-gray-900">Position</label>
+                                    <input type="text" name="name" id="name" class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="Professional Slacker">
+                                </div>
+                                <div class="mt-4">
+                                    <label for="location" class="block text-sm font-medium text-gray-700">Role</label>
+                                    <select id="location" name="location" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                        <option>Admin</option>
+                                        <option selected>User</option>
+                                        <option>Locked</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- /End replace -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@code {
+    private string HiddenCss => _usersPageState.EditUserFlyoutHidden ? string.Empty : "hidden";
+    private string TransitionCss => _usersPageState.EditUserFlyoutOpen ? "ease-in-out duration-500 opacity-100" : "ease-in-out duration-500 opacity-0";
+    private string TransformCss => _usersPageState.EditUserFlyoutOpen ? "transform transition ease-in-out duration-500 sm:duration-700 translate-x-0" : "transform transition ease-in-out duration-500 sm:duration-700 translate-x-full";
+
+    private async Task ToggleNavMenu()
+    {
+        await _usersPageState.ToggleEditUserFlyout();
+    }
+
+    protected override void OnInitialized()
+    {
+        _usersPageState.OnChange += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        _usersPageState.OnChange -= StateHasChanged;
+    }
+
+}

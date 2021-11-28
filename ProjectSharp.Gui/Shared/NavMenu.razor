@@ -1,32 +1,7 @@
-﻿@* <div class="top-row ps-3 navbar navbar-dark"> *@
-@*     <div class="container-fluid"> *@
-@*         <a class="navbar-brand" href="">ProjectSharp.Gui</a> *@
-@*         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu"> *@
-@*             <span class="navbar-toggler-icon"></span> *@
-@*         </button> *@
-@*     </div> *@
-@* </div> *@
-@* *@
-@* <div class="@NavMenuCssClass" @onclick="ToggleNavMenu"> *@
-@*     <nav class="flex-column"> *@
-@*         <div class="nav-item px-3"> *@
-@*             <NavLink class="nav-link" href="" Match="NavLinkMatch.All"> *@
-@*                 <span class="oi oi-home" aria-hidden="true"></span> Home *@
-@*             </NavLink> *@
-@*         </div> *@
-@*         <div class="nav-item px-3"> *@
-@*             <NavLink class="nav-link" href="counter"> *@
-@*                 <span class="oi oi-plus" aria-hidden="true"></span> Counter *@
-@*             </NavLink> *@
-@*         </div> *@
-@*         <div class="nav-item px-3"> *@
-@*             <NavLink class="nav-link" href="fetchdata"> *@
-@*                 <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data *@
-@*             </NavLink> *@
-@*         </div> *@
-@*     </nav> *@
-@* </div> *@
-
+﻿@using ProjectSharp.Gui.Features.Auth.Logout
+@using AuthenticationState = ProjectSharp.Gui.Features.Auth.AuthenticationState
+@inject ILogoutAuthFeature _logoutAuthFeature
+@inject AuthenticationState _authenticationState
 
 <div class="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
     <!-- Sidebar component, swap this element with another sidebar if you like -->
@@ -35,50 +10,63 @@
             <div class="flex items-center flex-shrink-0 px-4">
                 <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg" alt="Workflow">
             </div>
-            <nav class="mt-5 flex-1 px-2 space-y-1">
-                <NavLink class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md" href="/" ActiveClass="bg-gray-900 text-white" Match="NavLinkMatch.All">
+            <nav class="mt-5 flex-1 space-y-1">
+                <NavLink class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center px-2 py-2 text-sm font-medium" href="/" ActiveClass="bg-gray-900 text-white" Match="NavLinkMatch.All">
                     <svg class="text-gray-400 group-hover:text-gray-300 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
                     </svg>
                     Dashboard
                 </NavLink>
-                <NavLink class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md" href="customers" ActiveClass="bg-gray-900 text-white">
+                <NavLink class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center px-2 py-2 text-sm font-medium" href="customers" ActiveClass="bg-gray-900 text-white">
                     <svg class="text-gray-400 group-hover:text-gray-300 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
                     </svg>
                     Customers
                 </NavLink>
-                <NavLink class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md" href="suppliers" ActiveClass="bg-gray-900 text-white">
+                <NavLink class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center px-2 py-2 text-sm font-medium" href="suppliers" ActiveClass="bg-gray-900 text-white">
                     <svg class="text-gray-400 group-hover:text-gray-300 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
                     </svg>
                     Suppliers
                 </NavLink>
-                <NavLink class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md" href="projects" ActiveClass="bg-gray-900 text-white">
+                <NavLink class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center px-2 py-2 text-sm font-medium" href="projects" ActiveClass="bg-gray-900 text-white">
                     <svg class="text-gray-400 group-hover:text-gray-300 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
                     </svg>
                     Projects
                 </NavLink>
+                <NavLink class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center px-2 py-2 text-sm font-medium" href="login" ActiveClass="bg-gray-900 text-white">
+                    <svg class="text-gray-400 group-hover:text-gray-300 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                    </svg>
+                    Login
+                </NavLink>
             </nav>
         </div>
-        
+        <NavLink class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center px-2 py-2 text-sm font-medium" href="users" ActiveClass="bg-gray-900 text-white">
+            <svg class="text-gray-400 group-hover:text-gray-300 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+            </svg>
+            Users
+        </NavLink>
         <div class="flex-shrink-0 flex bg-gray-700 p-4">
-            <a href="#" class="flex-shrink-0 w-full group block">
+            <div href="#" class="flex-shrink-0 w-full group block">
                 <div class="flex items-center">
                     <div>
-                        <img class="inline-block h-9 w-9 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                        <span class="h-10 w-10 rounded-full bg-green-500 flex items-center justify-center ring-white ring-2">
+                            NW
+                        </span>
                     </div>
                     <div class="ml-3">
                         <p class="text-sm font-medium text-white">
-                            Tom Cook
+                            @_authenticationState.CurrentUser?.Email
                         </p>
-                        <p class="text-xs font-medium text-gray-300 group-hover:text-gray-200">
-                            View profile
-                        </p>
+                        <button @onclick="_logoutAuthFeature.Logout" class="text-xs font-medium text-gray-300 group-hover:text-gray-200">
+                            Logout
+                        </button>
                     </div>
                 </div>
-            </a>
+            </div>
         </div>
     </div>
 </div>
