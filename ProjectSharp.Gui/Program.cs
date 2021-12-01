@@ -6,6 +6,7 @@ using ProjectSharp.Gui.Database.Configuration;
 using ProjectSharp.Gui.Features.Auth;
 using ProjectSharp.Gui.Features.Auth.Login;
 using ProjectSharp.Gui.Features.Auth.Logout;
+using ProjectSharp.Gui.Features.Users.GetAll;
 using ProjectSharp.Gui.Pages.UsersPage;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,6 +29,7 @@ builder.Services.AddSingleton<UsersPageState>();
 // Features
 builder.Services.AddTransient<ILoginAuthFeature, LoginAuthFeature>();
 builder.Services.AddTransient<ILogoutAuthFeature, LogoutAuthFeature>();
+builder.Services.AddTransient<IGetAllUsersFeature, GetAllUsersFeature>();
 
 // Brokers
 builder.Services.AddTransient<IDateTimeBroker, DateTimeBroker>();

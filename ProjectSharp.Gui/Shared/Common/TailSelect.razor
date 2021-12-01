@@ -1,0 +1,40 @@
+<div class="@ColSpan">
+    <label for="@FriendlyName" class="block text-sm font-medium text-gray-700">Role</label>
+    <select @onchange="OnValueChanged" id="@FriendlyName" name="@FriendlyName" autocomplete="@Autocomplete" class="mt-1 block w-full bg-white border border-gray-300 shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        @foreach (var option in Options)  
+        {
+            if (Value == option)
+            {
+                <option selected>@option</option> 
+            }
+            else
+            {
+                <option value="@option">@option</option> 
+            }
+        }  
+    </select>
+</div>
+
+@code {
+    [Parameter]
+    public string ColSpan { get; set; } = "";
+    [Parameter]
+    public string Name { get; set; }
+    [Parameter]
+    public string Autocomplete { get; set; } = "";
+    
+    private string FriendlyName => Name.Replace(" ", "-");
+    [Parameter]
+    public IEnumerable <string> Options { get; set; }  
+
+    [Parameter]  
+    public string Value { get; set; }  
+    
+    [Parameter]  
+    public EventCallback <string> ValueChanged { get; set; }  
+    
+    private Task OnValueChanged(ChangeEventArgs e) {  
+        Value = e.Value?.ToString();  
+        return ValueChanged.InvokeAsync(Value);  
+    } 
+}

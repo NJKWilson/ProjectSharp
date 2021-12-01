@@ -1,0 +1,16 @@
+<div class="@ColSpan">
+    <label for="@FriendlyName" class="block text-sm font-medium text-gray-700">@Name</label>
+    <input type="text" name="@FriendlyName" id="@FriendlyName" autocomplete="@Autocomplete" class="mt-1 block w-full border border-gray-300 shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+</div>
+
+@code {
+
+    [Parameter]
+    public string ColSpan { get; set; } = "";
+    [Parameter]
+    public string Name { get; set; }
+    [Parameter]
+    public string Autocomplete { get; set; } = "";
+    
+    private string FriendlyName => Name.Replace(" ", "-");
+}

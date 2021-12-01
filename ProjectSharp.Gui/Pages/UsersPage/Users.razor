@@ -1,9 +1,11 @@
 @page "/users"
+@using ProjectSharp.Gui.Database.Entities.Users
+@using ProjectSharp.Gui.Features.Users.GetAll
 @inject UsersPageState _usersPageState
+@inject IGetAllUsersFeature _getAllUsersFeature
 
 
 <EditUser/>
-<!-- This example requires Tailwind CSS v2.0+ -->
 <div class="flex flex-col">
     <div class="mb-4 lg:flex lg:items-center lg:justify-between">
         <div class="flex-1 min-w-0">
@@ -13,7 +15,6 @@
         </div>
         <span class="sm:ml-3">
             <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <!-- Heroicon name: solid/check -->
                 <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                 </svg>
@@ -45,39 +46,13 @@
                     </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <div class="flex-shrink-0 h-10 w-10">
-                                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
-                                </div>
-                                <div class="ml-4">
-                                    <div class="text-sm font-medium text-gray-900">
-                                        Jane Cooper
-                                    </div>
-                                    <div class="text-sm text-gray-500">
-                                        jane.cooper@example.com
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">Regional Paradigm Technician</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                Active
-                            </span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                            Admin
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                            <button @onclick="ToggleNavMenu" class="text-indigo-600 hover:text-indigo-900">Edit</button>
-                        </td>
-                    </tr>
-
-                    <!-- More people... -->
+                    @if (_users != null)
+                    {
+                        @foreach (var user in _users)
+                        {
+                            <UsersTableRecord User="user"/>
+                        }
+                    }
                     </tbody>
                 </table>
             </div>
@@ -87,10 +62,12 @@
 
 
 @code {
+    IEnumerable<User>? _users;
 
-    private async Task ToggleNavMenu()
+    protected override async Task OnInitializedAsync()
     {
-        await _usersPageState.ToggleEditUserFlyout();
+        await base.OnInitializedAsync();
+        _users = await _getAllUsersFeature.GetAll();
     }
 
 }
