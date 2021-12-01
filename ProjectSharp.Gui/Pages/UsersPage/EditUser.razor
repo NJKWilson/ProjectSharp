@@ -8,9 +8,9 @@
     <EditForm Model="@_usersPageState.EditUserModel" OnValidSubmit="OnValidSubmit">
         <DataAnnotationsValidator/>
         <MudDrawerHeader>
-            <MudText Typo="Typo.h6">Edit User1</MudText>
+            <MudText Typo="Typo.h6">Edit User</MudText>
         </MudDrawerHeader>
-        <MudGrid Class="px-2">
+        <MudGrid Class="px-4">
             <MudItem xs="12">
                 <MudTextField @bind-Value="_usersPageState.EditUserModel.FirstName" For="@(() => _usersPageState.EditUserModel.FirstName)" Label="First Name" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
             </MudItem>
