@@ -1,5 +1,74 @@
-<h3>AddUser</h3>
+@using ProjectSharp.Gui.Database.Entities.Users
+@using ProjectSharp.Gui.Features.Users.Create
+@using AuthenticationState = ProjectSharp.Gui.Features.Auth.AuthenticationState
+
+@inject AuthenticationState _authenticationState
+@inject UsersPageState _usersPageState
+@inject ICreateUserFeature _createUserFeature
+
+@implements IDisposable
+
+<MudDrawer @bind-Open="@_usersPageState.CreateUserFlyoutOpen" Anchor="@Anchor.End" Width="25%" Elevation="1" Variant="@DrawerVariant.Temporary">
+    <EditForm Model="@_usersPageState.CreateUserFeatureRequest" OnValidSubmit="OnValidSubmit">
+        <DataAnnotationsValidator/>
+        <MudDrawerHeader>
+            <MudText Typo="Typo.h6">Create User</MudText>
+        </MudDrawerHeader>
+        <MudGrid Class="px-2">
+            <MudItem xs="12">
+                <MudTextField @bind-Value="_usersPageState.CreateUserFeatureRequest.FirstName" For="@(() => _usersPageState.CreateUserFeatureRequest.FirstName)" Label="First Name" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
+            </MudItem>
+            <MudItem xs="12">
+                <MudTextField @bind-Value="_usersPageState.CreateUserFeatureRequest.LastName" For="@(() => _usersPageState.CreateUserFeatureRequest.LastName)" Label="Last Name" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
+            </MudItem>
+            <MudItem xs="12">
+                <MudTextField @bind-Value="_usersPageState.CreateUserFeatureRequest.Email" For="@(() => _usersPageState.CreateUserFeatureRequest.Email)" Label="Email" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
+            </MudItem>
+            <MudItem xs="12">
+                <MudTextField @bind-Value="_usersPageState.CreateUserFeatureRequest.JobTitle" For="@(() => _usersPageState.CreateUserFeatureRequest.JobTitle)" Label="Job Title" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
+            </MudItem>
+            <MudItem xs="12">
+                <MudTextField @bind-Value="_usersPageState.CreateUserFeatureRequest.Password" For="@(() => _usersPageState.CreateUserFeatureRequest.Password)" Label="Password" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
+            </MudItem>
+        </MudGrid>
+        <MudGrid Justify="Justify.FlexEnd" Class="px-2">
+            <MudItem>
+                <MudButton OnClick="_usersPageState.CloseCreateUserFlyout">Cancel</MudButton>
+                <MudButton ButtonType="ButtonType.Submit">Save</MudButton>
+            </MudItem>
+        </MudGrid>
+    </EditForm>
+</MudDrawer>
+
 
 @code {
-    
+    IEnumerable<string> _roleOptions = Enum.GetNames(typeof(UserRole)).ToList();
+
+    private async Task OnValidSubmit(EditContext context)
+    {
+        if (_authenticationState.CurrentUser is not null)
+        {
+            try
+            {
+                await _createUserFeature.InsertAsync(_usersPageState.CreateUserFeatureRequest, _authenticationState.CurrentUser);
+                _usersPageState.CloseCreateUserFlyout();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        _usersPageState.OnChange += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        _usersPageState.OnChange -= StateHasChanged;
+    }
+
 }

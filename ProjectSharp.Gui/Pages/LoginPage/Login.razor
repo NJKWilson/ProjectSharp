@@ -1,6 +1,8 @@
 @page "/login"
 @using ProjectSharp.Gui.Features.Auth.Login
 @using AuthenticationState = ProjectSharp.Gui.Features.Auth.AuthenticationState
+@using System.ComponentModel.DataAnnotations
+
 @layout LoginLayout
 
 @inject ILoginAuthFeature _loginAuthFeature;
@@ -8,9 +10,6 @@
 @inject NavigationManager _navigationManager
 
 
-
-@using System.Text.RegularExpressions
-@using System.ComponentModel.DataAnnotations
 
 
 <MudContainer Style="height:100vh;" Class="d-flex justify-center align-center">
@@ -34,7 +33,6 @@
 
 @code {
     RegisterAccountForm model = new RegisterAccountForm();
-    bool success;
 
     public class RegisterAccountForm
     {
@@ -49,7 +47,6 @@
 
     private async Task OnValidSubmit(EditContext context)
     {
-        success = true;
         await _loginAuthFeature.Login(model.Email, model.Password);
 
         if (_authenticationState.IsAuthenticated)

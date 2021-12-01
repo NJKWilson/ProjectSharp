@@ -2,7 +2,6 @@ using ProjectSharp.Gui.Database.Entities.Users;
 
 namespace ProjectSharp.Gui.Features.Auth;
 
-// todo rename to AuthenticationState or AuthState
 public class AuthenticationState
 {
     // todo needs to get the user from the database everytime its requested

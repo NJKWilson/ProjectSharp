@@ -16,9 +16,7 @@
         <Folder Include="Database\Entities\Sites" />
         <Folder Include="Database\Entities\Suppliers" />
         <Folder Include="Features\Users\GetAll\Exceptions" />
-        <Folder Include="Features\Users\UpdateEmail" />
         <Folder Include="Features\Users\UpdatePassword" />
-        <Folder Include="Features\Users\UpdateRole" />
     </ItemGroup>
 
     <ItemGroup>

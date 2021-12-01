@@ -1,73 +1,55 @@
-@inject UsersPageState _usersPageState
 @using ProjectSharp.Gui.Database.Entities.Users
+
+@inject UsersPageState _usersPageState
+
 @implements IDisposable
 
-<div class="@HiddenCss fixed inset-0 overflow-hidden z-10" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
-    <div class="absolute inset-0 overflow-hidden">
-        <div class="@TransitionCss absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
-        <div class="fixed inset-y-0 right-0 pl-10 max-w-full flex">
-            <div class="@TransformCss w-screen max-w-md">
-                <div class="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
-                    <div class="px-4 sm:px-6">
-                        <div class="flex items-start justify-between">
-                            <h2 class="text-lg font-medium text-gray-900" id="slide-over-title">
-                                Panel title
-                            </h2>
-                            <div class="ml-3 h-7 flex items-center">
-                                <button type="button" @onclick="ToggleNavMenu" class="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                    <span class="sr-only">Close panel</span>
-                                    <!-- HeroIcon name: outline/x -->
-                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-6 relative flex-1 px-4 sm:px-6">
-                        <!-- Edit Form -->
-                        <div class="grid grid-cols-6 gap-6">
-                            <TailInput ColSpan="col-span-6 sm:col-span-3" Name="First Name"/>
-                            <TailInput ColSpan="col-span-6 sm:col-span-3" Name="Last Name"/>
-                            <TailInput ColSpan="col-span-6 sm:col-span-3" Name="Email Address"/>
-                            <TailInput ColSpan="col-span-6 sm:col-span-3" Name="Position"/>
-
-                            <TailSelect ColSpan="col-span-6 sm:col-span-3" Name="Role" Options="@_roleOptions" ValueChanged="RoleSelectChanged" Value="Locked"/>
-                        </div>
-
-                        <div class="py-3 text-right">
-                            <button type="submit" class="bg-indigo-600 border border-transparent shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                Save
-                            </button>
-                            <button type="submit" class="bg-indigo-600 border border-transparent shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                Cancel
-                            </button>
-                        </div>
-                        <!-- /End replace -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<MudDrawer @bind-Open="@_usersPageState.EditUserFlyoutOpen" Anchor="@Anchor.End" Width="25%" Elevation="1" Variant="@DrawerVariant.Temporary">
+    <EditForm Model="@_usersPageState.EditUserModel" OnValidSubmit="OnValidSubmit">
+        <DataAnnotationsValidator/>
+        <MudDrawerHeader>
+            <MudText Typo="Typo.h6">Edit User1</MudText>
+        </MudDrawerHeader>
+        <MudGrid Class="px-2">
+            <MudItem xs="12">
+                <MudTextField @bind-Value="_usersPageState.EditUserModel.FirstName" For="@(() => _usersPageState.EditUserModel.FirstName)" Label="First Name" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
+            </MudItem>
+            <MudItem xs="12">
+                <MudTextField @bind-Value="_usersPageState.EditUserModel.LastName" For="@(() => _usersPageState.EditUserModel.LastName)" Label="Last Name" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
+            </MudItem>
+            <MudItem xs="12">
+                <MudTextField @bind-Value="_usersPageState.EditUserModel.Email" For="@(() => _usersPageState.EditUserModel.Email)" Label="Email" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
+            </MudItem>
+            <MudItem xs="12">
+                <MudTextField @bind-Value="_usersPageState.EditUserModel.JobTitle" For="@(() => _usersPageState.EditUserModel.JobTitle)" Label="Job Title" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
+            </MudItem>
+            <MudItem xs="12">
+                <MudSelect Label="Select Role" @bind-Value="_usersPageState.EditUserModel.Role" Variant="Variant.Outlined" Margin="Margin.Dense">
+                    @foreach (var item in _roleOptions)
+                    {
+                        <MudSelectItem Value="@item">@item</MudSelectItem>
+                    }
+                </MudSelect>
+            </MudItem>
+        </MudGrid>
+        <MudGrid Justify="Justify.FlexEnd" Class="px-2">
+            <MudItem>
+                <MudButton OnClick="_usersPageState.CloseEditUserFlyout">Cancel</MudButton>
+                <MudButton ButtonType="ButtonType.Submit">Save</MudButton>
+            </MudItem>
+        </MudGrid>
+    </EditForm>
+</MudDrawer>
 
 
 @code {
-    private string HiddenCss => _usersPageState.EditUserFlyoutHidden ? string.Empty : "hidden";
-    private string TransitionCss => _usersPageState.EditUserFlyoutOpen ? "ease-in-out duration-500 opacity-100" : "ease-in-out duration-500 opacity-0";
-    private string TransformCss => _usersPageState.EditUserFlyoutOpen ? "transform transition ease-in-out duration-500 sm:duration-700 translate-x-0" : "transform transition ease-in-out duration-500 sm:duration-700 translate-x-full";
-
     IEnumerable<string> _roleOptions = Enum.GetNames(typeof(UserRole)).ToList();
 
-    private async Task ToggleNavMenu()
+    private async Task OnValidSubmit(EditContext context)
     {
-        await _usersPageState.ToggleEditUserFlyout();
+        // todo update user feature
     }
-
-    private async Task RoleSelectChanged(string selectedValue)
-    {
-    }
-
+    
     protected override void OnInitialized()
     {
         _usersPageState.OnChange += StateHasChanged;

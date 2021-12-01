@@ -21,14 +21,14 @@ public class CreateUserFeature : ICreateUserFeature
         _passwordBroker = passwordBroker;
     }
 
-    public async ValueTask<User> InsertAsync(string email, string password, User creatingUser)
+    public async ValueTask<User> InsertAsync(CreateUserFeatureRequest createUserFeatureRequest, User creatingUser)
     {
         // Validation
-        if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
+        if (string.IsNullOrWhiteSpace(createUserFeatureRequest.Email) || string.IsNullOrWhiteSpace(createUserFeatureRequest.Password))
             throw new CreateUserFeatureBadRequestException("Username or Password cannot be empty.");
 
         // Check user does not exist.
-        var searchFilter = Builders<User>.Filter.Where(u => u.Email == email);
+        var searchFilter = Builders<User>.Filter.Where(u => u.Email == createUserFeatureRequest.Email);
 
         var maybeUser = await _mongoDbContext.Users.Find(searchFilter).FirstOrDefaultAsync();
         
@@ -38,8 +38,11 @@ public class CreateUserFeature : ICreateUserFeature
         // Build the new user.
         var newUser = new User
         {
-            Email = email,
-            Password = _passwordBroker.HashPassword(password),
+            FirstName = createUserFeatureRequest.FirstName,
+            LastName = createUserFeatureRequest.LastName,
+            JobTitle = createUserFeatureRequest.JobTitle,
+            Email = createUserFeatureRequest.Email,
+            Password = _passwordBroker.HashPassword(createUserFeatureRequest.Password),
             Role = UserRole.Locked.ToString(),
             CreatedBy = creatingUser,
             CreatedOn = _dateTimeBroker.TimeNow()

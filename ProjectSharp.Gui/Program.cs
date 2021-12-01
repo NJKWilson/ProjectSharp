@@ -1,4 +1,3 @@
-using Microsoft.Extensions.Options;
 using MudBlazor.Services;
 using ProjectSharp.Gui.Brokers.DateTime;
 using ProjectSharp.Gui.Brokers.Password;
@@ -6,7 +5,7 @@ using ProjectSharp.Gui.Database;
 using ProjectSharp.Gui.Database.Configuration;
 using ProjectSharp.Gui.Features.Auth;
 using ProjectSharp.Gui.Features.Auth.Login;
-using ProjectSharp.Gui.Features.Auth.Logout;
+using ProjectSharp.Gui.Features.Users.Create;
 using ProjectSharp.Gui.Features.Users.GetAll;
 using ProjectSharp.Gui.Pages.UsersPage;
 using ProjectSharp.Gui.Shared;
@@ -32,7 +31,7 @@ builder.Services.AddSingleton<UsersPageState>();
 
 // Features
 builder.Services.AddTransient<ILoginAuthFeature, LoginAuthFeature>();
-builder.Services.AddTransient<ILogoutAuthFeature, LogoutAuthFeature>();
+builder.Services.AddTransient<ICreateUserFeature, CreateUserFeature>();
 builder.Services.AddTransient<IGetAllUsersFeature, GetAllUsersFeature>();
 
 // Brokers
