@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace ProjectSharp.Gui.Database.Entities.Users;
 
 /// <summary>

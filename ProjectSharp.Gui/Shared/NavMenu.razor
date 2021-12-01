@@ -17,7 +17,7 @@
 
 <MudCardHeader>
     <CardHeaderAvatar>
-        <MudAvatar Color="Color.Secondary">@_authenticationState.CurrentUser?.FirstName?.Substring(0,1)@_authenticationState.CurrentUser?.LastName?.Substring(0,1)</MudAvatar>
+        <MudAvatar Color="Color.Secondary">@((_authenticationState.CurrentUser?.FirstName)?[..1])@((_authenticationState.CurrentUser?.LastName)?[..1])</MudAvatar>
     </CardHeaderAvatar>
     <CardHeaderContent>
         <MudText Typo="Typo.body1">@_authenticationState.CurrentUser?.FirstName @_authenticationState.CurrentUser?.LastName</MudText>

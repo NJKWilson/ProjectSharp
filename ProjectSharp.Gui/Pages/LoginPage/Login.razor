@@ -38,11 +38,11 @@
     {
         [Required]
         [EmailAddress]
-        public string Email { get; set; }
+        public string Email { get; set; } = "";
 
         [Required]
         [StringLength(30, ErrorMessage = "Password must be at least 4 characters long.", MinimumLength = 4)]
-        public string Password { get; set; }
+        public string Password { get; set; } = "";
     }
 
     private async Task OnValidSubmit(EditContext context)

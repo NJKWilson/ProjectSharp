@@ -51,7 +51,7 @@ public class LoginAuthFeature : ILoginAuthFeature
         // Check password
         try
         {
-            if (maybeUser.Password != null && !_passwordBroker.VerifyPassword(password, maybeUser.Password))
+            if (!_passwordBroker.VerifyPassword(password, maybeUser.Password))
                 throw new LoginAuthFeatureBadRequest("Username or Password is incorrect.");
         }
         catch (Exception exception)
