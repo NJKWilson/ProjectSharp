@@ -1,85 +1,34 @@
 ﻿@using ProjectSharp.Gui.Features.Auth.Logout
 @using AuthenticationState = ProjectSharp.Gui.Features.Auth.AuthenticationState
-@inject ILogoutAuthFeature _logoutAuthFeature
 @inject AuthenticationState _authenticationState
 
-<div class="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
-    <!-- Sidebar component, swap this element with another sidebar if you like -->
-    <div class="flex-1 flex flex-col min-h-0 bg-gray-800">
-        <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-            <div class="flex items-center flex-shrink-0 px-4">
-                <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg" alt="Workflow">
-            </div>
-            <nav class="mt-5 flex-1 space-y-1">
-                <NavLink class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center px-2 py-2 text-sm font-medium" href="/" ActiveClass="bg-gray-900 text-white" Match="NavLinkMatch.All">
-                    <svg class="text-gray-400 group-hover:text-gray-300 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
-                    </svg>
-                    Dashboard
-                </NavLink>
-                <NavLink class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center px-2 py-2 text-sm font-medium" href="customers" ActiveClass="bg-gray-900 text-white">
-                    <svg class="text-gray-400 group-hover:text-gray-300 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
-                    </svg>
-                    Customers
-                </NavLink>
-                <NavLink class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center px-2 py-2 text-sm font-medium" href="suppliers" ActiveClass="bg-gray-900 text-white">
-                    <svg class="text-gray-400 group-hover:text-gray-300 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
-                    </svg>
-                    Suppliers
-                </NavLink>
-                <NavLink class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center px-2 py-2 text-sm font-medium" href="projects" ActiveClass="bg-gray-900 text-white">
-                    <svg class="text-gray-400 group-hover:text-gray-300 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
-                    </svg>
-                    Projects
-                </NavLink>
-                <NavLink class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center px-2 py-2 text-sm font-medium" href="login" ActiveClass="bg-gray-900 text-white">
-                    <svg class="text-gray-400 group-hover:text-gray-300 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
-                    </svg>
-                    Login
-                </NavLink>
-            </nav>
-        </div>
-        <NavLink class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center px-2 py-2 text-sm font-medium" href="users" ActiveClass="bg-gray-900 text-white">
-            <svg class="text-gray-400 group-hover:text-gray-300 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
-            </svg>
-            Users
-        </NavLink>
-        <div class="flex-shrink-0 flex bg-gray-700 p-4">
-            <div href="#" class="flex-shrink-0 w-full group block">
-                <div class="flex items-center">
-                    <div>
-                        <span class="h-10 w-10 rounded-full bg-green-500 flex items-center justify-center ring-white ring-2">
-                            NW
-                        </span>
-                    </div>
-                    <div class="ml-3">
-                        <p class="text-sm font-medium text-white">
-                            @_authenticationState.CurrentUser?.Email
-                        </p>
-                        <button @onclick="_logoutAuthFeature.Logout" class="text-xs font-medium text-gray-300 group-hover:text-gray-200">
-                            Logout
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<MudNavMenu>
+    <MudNavLink Href="/">Dashboard</MudNavLink>
+    <MudNavLink Href="/servers">Servers</MudNavLink>
+    <MudNavGroup Title="Settings" Expanded="false">
+        <MudNavLink Href="/users">Users</MudNavLink>
+        <MudNavLink Href="/security">Security</MudNavLink>
+    </MudNavGroup>
+    <MudNavLink Href="/about">About</MudNavLink>
 
+
+</MudNavMenu>
+
+<MudSpacer/>
+
+<MudCardHeader>
+    <CardHeaderAvatar>
+        <MudAvatar Color="Color.Secondary">@_authenticationState.CurrentUser?.FirstName?.Substring(0,1)@_authenticationState.CurrentUser?.LastName?.Substring(0,1)</MudAvatar>
+    </CardHeaderAvatar>
+    <CardHeaderContent>
+        <MudText Typo="Typo.body1">@_authenticationState.CurrentUser?.FirstName @_authenticationState.CurrentUser?.LastName</MudText>
+        <MudText Typo="Typo.body2">@_authenticationState.CurrentUser?.JobTitle</MudText>
+    </CardHeaderContent>
+    <CardHeaderActions>
+        <MudIconButton OnClick="_authenticationState.LogoutUser" Icon="@Icons.Material.Filled.VpnKey" Color="Color.Default"/>
+    </CardHeaderActions>
+</MudCardHeader>
 
 @code {
-    private bool _collapseNavMenu = true;
-
-    private string? NavMenuCssClass => _collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
-    {
-        _collapseNavMenu = !_collapseNavMenu;
-    }
 
 }

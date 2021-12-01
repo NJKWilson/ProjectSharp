@@ -3,35 +3,42 @@
 
 @inject AuthenticationState _authenticationState
 @inject NavigationManager _navigationManager
+@inject ThemeState _themeState
 
 <PageTitle>ProjectSharp.Gui</PageTitle>
 
-<div>
-    @* <MobileNavMenu/> *@
-    <NavMenu/>
+<MudThemeProvider Theme="_themeState.CurrentTheme"/>
+<MudDialogProvider/>
+<MudSnackbarProvider/>
 
-    <div class="md:pl-64 flex flex-col flex-1">
-        <div class="sticky top-0 z-10 md:hidden pl-1 pt-1 sm:pl-3 sm:pt-3 bg-gray-100">
-            <button type="button" class="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-                <span class="sr-only">Open sidebar</span>
-                <!-- Heroicon name: outline/menu -->
-                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
-            </button>
-        </div>
-        <main class="flex-1">
-            <div class="py-6">
-                <div class="mx-auto px-4 sm:px-6 md:px-8">
-                    @Body
-                </div>
-            </div>
-        </main>
-    </div>
-</div>
+
+
+<MudLayout>
+    <MudAppBar Elevation="1">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+        <MudText Typo="Typo.h5" Class="ml-3">Project Sharp</MudText>
+        <MudSpacer />
+        <MudIconButton Icon="@Icons.Material.Filled.DarkMode" Color="Color.Inherit" Edge="Edge.End" OnClick="@((e) => _themeState.ToggleTheme())" />
+        <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" />
+    </MudAppBar>
+    <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2" Variant="@DrawerVariant.Persistent">
+        <NavMenu />
+    </MudDrawer>
+    <MudMainContent>
+        @Body
+    </MudMainContent>
+</MudLayout>
+
 
 @code
 {
+    bool _drawerOpen = true;
+    
+    void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+    
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();

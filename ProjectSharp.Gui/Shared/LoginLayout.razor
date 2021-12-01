@@ -1,6 +1,12 @@
 @inherits LayoutComponentBase
 
+@inject ThemeState _themeState
+
 <PageTitle>ProjectSharp.Gui</PageTitle>
+
+<MudThemeProvider Theme="_themeState.CurrentTheme"/>
+<MudDialogProvider/>
+<MudSnackbarProvider/>
 
 <div>
     @Body
