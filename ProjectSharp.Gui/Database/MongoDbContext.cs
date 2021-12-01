@@ -21,7 +21,7 @@ public class MongoDbContext : IMongoDbContext
     private void SeedAdminUser()
     {
         // Check user does not exist.
-        var searchFilter = Builders<User>.Filter.Where(u => u.Email == "admin");
+        var searchFilter = Builders<User>.Filter.Where(u => u.Email == "admin@psharp.com");
 
         var maybeUser = Users.Find(searchFilter).FirstOrDefault();
 
@@ -30,7 +30,10 @@ public class MongoDbContext : IMongoDbContext
         
         var newUser = new User
         {
-            Email = "admin",
+            FirstName = "Admin",
+            LastName = "Psharp",
+            JobTitle = "Administrator",
+            Email = "admin@psharp.com",
             Password = "$2a$11$wavn.EqSjRjLzfaE9jsN6uRLgU51Uu6o39kZUOQld11HwF9En7imy",
             Role = UserRole.Admin.ToString(),
             CreatedBy = new User(){Email = "seed"},

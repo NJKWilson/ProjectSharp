@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Options;
+using MudBlazor.Services;
 using ProjectSharp.Gui.Brokers.DateTime;
 using ProjectSharp.Gui.Brokers.Password;
 using ProjectSharp.Gui.Database;
@@ -8,12 +9,14 @@ using ProjectSharp.Gui.Features.Auth.Login;
 using ProjectSharp.Gui.Features.Auth.Logout;
 using ProjectSharp.Gui.Features.Users.GetAll;
 using ProjectSharp.Gui.Pages.UsersPage;
+using ProjectSharp.Gui.Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+builder.Services.AddMudServices();
 
 // Db
 var mongoDbSettings = new MongoDbSettings();
@@ -24,6 +27,7 @@ builder.Services.AddSingleton<IMongoDbContext, MongoDbContext>();
 
 // States
 builder.Services.AddSingleton<AuthenticationState>();
+builder.Services.AddSingleton<ThemeState>();
 builder.Services.AddSingleton<UsersPageState>();
 
 // Features
